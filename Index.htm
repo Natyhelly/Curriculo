@@ -2,6 +2,7 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Inter&family=Lemonada&display=swap" rel="stylesheet">
     <meta charset="utf-8" />
     <title></title>
     <style>
@@ -12,34 +13,60 @@
             background-repeat: no-repeat;
             overflow-y: hidden;
         }
+
         .minhaFoto {
             margin-left: 25%;
             margin-top: 20px;
-            width: 153px; 
+            width: 153px;
             height: 204px;
             z-index: 1;
-            position:relative;
+            position: relative;
+            border: 2px solid #FFFFFF;
         }
+
         .vetores {
             z-index: 0;
             position: absolute;
         }
-       
+
         #textoNome {
-            
             margin-top: 73px;
             margin-left: -10%;
-            width: 514px;
-            height: 44px;
-            font-family: 'Inter';
-            font-style: italic;
-            font-weight: 900;
-            font-size: 36px;
-            line-height: 44px;
+            width: 528px;
+            height: 72px;
+            font-family: 'Lemonada', cursive;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 40px;
+            line-height: 72px;
             text-align: center;
-            color: #000000;
+            color: #E793F4;
+            -webkit-text-stroke-width: 0.3px;
+            -webkit-text-stroke-color: #000000;
         }
 
+        #textoSobreMim {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 200;
+            font-size: 35px;
+            line-height: 42px;
+            text-align: center;
+            color: #FFFFFF;
+            text-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        #textoOla {
+            font-family: 'Birthstone';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 44px;
+            letter-spacing: 0.1em;
+            color: #000000;
+            -webkit-text-stroke-width: 0.5px;
+            -webkit-text-stroke-color: #000000;
+        }
     </style>
 </head>
 <body>
@@ -50,12 +77,15 @@
         <img src="Imagens/vetor3.png" class="vetores" style="margin-top: 164.83px; width: 350px; height: 42px">
         <img src="Imagens/vetor4.png" class="vetores" style="margin-top: 13px; right: 29px; width: 240px; height: 135.83px">
         <img src="Imagens/vetor5.png" class="vetores" style="margin-top: 160.56px; right: 0px; width: 208px; height: 36.27px">
-        <img src="Imagens/github.png" class="vetores" style="margin-top: 266.83px; right: 46px; height: 34px">
-        <img src="Imagens/linkedin.png" class="vetores" style="margin-top: 266.83px; right: 88px; width: 35px; height: 34px">
         <img src="Imagens/vetor6.png" class="vetores" style="margin-top: 610.83px; left: 29px; width: 264px; height: 113px">
         <img src="Imagens/vetor7.png" class="vetores" style="margin-top: 570.83px; right: 0px; width: 303px; height: 153px">
-
-
+        <a href="https://github.com/Natyhelly" target="_blank" class="vetores" style="margin-top: 266.83px; right: 46px">
+            <img src="Imagens/github.png"  style="height: 34px">
+        </a>
+        <a href="https://www.linkedin.com/in/nathyelly-laguna-abreu/" target="_blank" class="vetores" style="margin-top: 266.83px; right: 88px;">
+            <img src="Imagens/linkedin.png" style="width: 35px; height: 34px">
+        </a>
+        
         <div id="segundaDiv" style="width: 20%; height: 250px; float: left">
 
             <img src="Imagens/eu.jpg" class="minhaFoto">
@@ -77,8 +107,8 @@
 
         </div>
     </div>
-    <div id="quartaDiv" style="width: 100%; padding-top: 100px">
-        <div style="margin-left: 20%">
+    <div id="quartaDiv" style="width: 100%; padding-top: 60px">
+        <div id="textoOla" style="margin-left: 20%">
             <text>
                 Olá! <br /> <br />
 
@@ -88,10 +118,10 @@
                 nwien q a nfwo iefnlkfn <br />
                 oweifn kfnwaefa
             </text>
-            
+
         </div>
     </div>
-
+    
 </body>
 </html>
 
