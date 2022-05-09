@@ -4,70 +4,22 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Inter&family=Lemonada&display=swap" rel="stylesheet">
     <meta charset="utf-8" />
-    <title></title>
-    <style>
-        body {
-            background-image: linear-gradient(to bottom, rgba(0, 193, 183, 0.5) 0%, rgba(57, 184, 176, 0) 100%);
-            height: 735px;
-            margin: 0px;
-            background-repeat: no-repeat;
-            overflow-y: hidden;
+    <title>
+        Currículo Nathy
+    </title>
+    <link rel="stylesheet" href="CSS/nathy.css">
+    <link rel="stylesheet" href="CSS/bootstrap/bootstrap.min.css">
+    <script src="Scripts/bootstrap/bootstrap.bundle.min.js"> </script>
+    <script type="text/javascript">
+        function alteraTextPaginaTab(text) {
+            document.getElementById('textPaginaTab').innerText = text;
         }
 
-        .minhaFoto {
-            margin-left: 25%;
-            margin-top: 20px;
-            width: 153px;
-            height: 204px;
-            z-index: 1;
-            position: relative;
-            border: 2px solid #FFFFFF;
+        function mensagemNaFoto(mensagem) {
+            alert(mensagem);
         }
-
-        .vetores {
-            z-index: 0;
-            position: absolute;
-        }
-
-        #textoNome {
-            margin-top: 73px;
-            margin-left: -10%;
-            width: 528px;
-            height: 72px;
-            font-family: 'Lemonada', cursive;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 40px;
-            line-height: 72px;
-            text-align: center;
-            color: #E793F4;
-            -webkit-text-stroke-width: 0.3px;
-            -webkit-text-stroke-color: #000000;
-        }
-
-        #textoSobreMim {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 200;
-            font-size: 35px;
-            line-height: 42px;
-            text-align: center;
-            color: #FFFFFF;
-            text-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
-        }
-
-        #textoOla {
-            font-family: 'Birthstone';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 25px;
-            line-height: 44px;
-            letter-spacing: 0.1em;
-            color: #000000;
-            -webkit-text-stroke-width: 0.5px;
-            -webkit-text-stroke-color: #000000;
-        }
-    </style>
+        
+    </script>
 </head>
 <body>
     <div id="primeiraDiv" style="width: 100%; height: 250px">
@@ -80,27 +32,27 @@
         <img src="Imagens/vetor6.png" class="vetores" style="margin-top: 610.83px; left: 29px; width: 264px; height: 113px">
         <img src="Imagens/vetor7.png" class="vetores" style="margin-top: 570.83px; right: 0px; width: 303px; height: 153px">
         <a href="https://github.com/Natyhelly" target="_blank" class="vetores" style="margin-top: 266.83px; right: 46px">
-            <img src="Imagens/github.png"  style="height: 34px">
+            <img src="Imagens/github.png" style="height: 34px; border-radius: 50%">
         </a>
         <a href="https://www.linkedin.com/in/nathyelly-laguna-abreu/" target="_blank" class="vetores" style="margin-top: 266.83px; right: 88px;">
-            <img src="Imagens/linkedin.png" style="width: 35px; height: 34px">
+            <img src="Imagens/linkedin.png" style="width: 35px; height: 34px; border-radius: 50%">
         </a>
-        
+
         <div id="segundaDiv" style="width: 20%; height: 250px; float: left">
 
-            <img src="Imagens/eu.jpg" class="minhaFoto">
+            <img src="Imagens/eu.jpg" class="minhaFoto" onclick="mensagemNaFoto('Essa sou eu');">
 
         </div>
         <div id="terceiraDiv" style="width: 80%; height: 250px; float: right">
 
             <div id="textoNome" style="width: 100%">
-                <text>
+                <text onclick="alert('Meu nome')">
                     NATHYELLY LAGUNA ABREU
                 </text>
             </div>
 
-            <div id="textoSobreMim" style="width: 100%; text-align: center; margin-left: -10%">
-                <text>
+            <div id="divPaginaTab" style="width: 100%; text-align: center; margin-left: -10%">
+                <text id="textPaginaTab">
                     Sobre mim
                 </text>
             </div>
@@ -108,20 +60,39 @@
         </div>
     </div>
     <div id="quartaDiv" style="width: 100%; padding-top: 60px">
-        <div id="textoOla" style="margin-left: 20%">
-            <text>
-                Olá! <br /> <br />
 
-                Aosiaofushgj ifjosifjo ijasoijfoaijaifo jf  jofiwjfi jjo ija <br />
-                ijfoaifja oj faoiefjaoiejawer awefk j <br />
-                jajfaea  jfaia eklwr awiejfaidfjlan nfa nwel <br />
-                nwien q a nfwo iefnlkfn <br />
-                oweifn kfnwaefa
-            </text>
 
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button onclick="alteraTextPaginaTab('Sobre mim');" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Sobre Mim</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button onclick="alteraTextPaginaTab('Calculadora');" class="nav-link" id="pills-calculator-tab" data-bs-toggle="pill" data-bs-target="#pills-calculator" type="button" role="tab" aria-controls="pills-calculator" aria-selected="false">Calculadora</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                <div id="textoOla" style="margin-left: 20%">
+                    <text>
+                        Olá! <br /> <br />
+
+                        Aosiaofushgj ifjosifjo ijasoijfoaijaifo jf  jofiwjfi jjo ija <br />
+                        ijfoaifja oj faoiefjaoiejawer awefk j <br />
+                        jajfaea  jfaia eklwr awiejfaidfjlan nfa nwel <br />
+                        nwien q a nfwo iefnlkfn <br />
+                        oweifn kfnwaefa
+                    </text>
+
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-calculator" role="tabpanel" aria-labelledby="pills-calculator-tab">...</div>
+            </div>
         </div>
-    </div>
-    
+
+
 </body>
 </html>
 
