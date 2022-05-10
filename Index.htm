@@ -59,15 +59,15 @@
 
         </div>
     </div>
-    <div id="quartaDiv" style="width: 100%; padding-top: 60px">
+    <div id="quartaDiv" style="width: 100%; padding-top: 60px; border-top: 2px solid #D1FFFC">
 
 
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button onclick="alteraTextPaginaTab('Sobre mim');" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Sobre Mim</button>
+                <button onclick="alteraTextPaginaTab('Sobre mim')" class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Sobre Mim</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button onclick="alteraTextPaginaTab('Calculadora');" class="nav-link" id="pills-calculator-tab" data-bs-toggle="pill" data-bs-target="#pills-calculator" type="button" role="tab" aria-controls="pills-calculator" aria-selected="false">Calculadora</button>
+                <button onclick="alteraTextPaginaTab('Calculadora')" class="nav-link" id="pills-calculator-tab" data-bs-toggle="pill" data-bs-target="#pills-calculator" type="button" role="tab" aria-controls="pills-calculator" aria-selected="false">Calculadora</button>
             </li>
         </ul>
 
@@ -84,14 +84,40 @@
                         nwien q a nfwo iefnlkfn <br />
                         oweifn kfnwaefa
                     </text>
-
                 </div>
             </div>
 
-            <div class="tab-pane fade" id="pills-calculator" role="tabpanel" aria-labelledby="pills-calculator-tab">...</div>
+            <div class="tab-pane fade" id="pills-calculator" role="tabpanel" aria-labelledby="pills-calculator-tab" style="padding-left: 50%">
+                <div class="container-calculadora">
+                    <div class="visor-calculadora"></div>
+                    <div class="container-botoes">
+                        <div class="container-numeros">
+                            <div class="caixas"> C </div>
+                            <div class="caixas"> / </div>
+                            <div class="caixas"> * </div>
+                            <div class="caixas"> 7 </div>
+                            <div class="caixas"> 8 </div>
+                            <div class="caixas"> 9 </div>
+                            <div class="caixas"> 4 </div>
+                            <div class="caixas"> 5 </div>
+                            <div class="caixas"> 6 </div>
+                            <div class="caixas"> 1 </div>
+                            <div class="caixas"> 2 </div>
+                            <div class="caixas"> 3 </div>
+                            <div class="caixas" style="width: 60px"> 0 </div>
+                            <div class="caixas"> , </div>
+                        </div>
+                        <div class="container-simbolo">
+                            <div class="caixas"> - </div>
+                            <div class="caixas" style="padding-top: 50%; width: 30px; height: 60px"> + </div>
+                            <div class="caixas" style="padding-top: 50%; width: 30px; height: 60px"> = </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
             </div>
         </div>
-
 
 </body>
 </html>

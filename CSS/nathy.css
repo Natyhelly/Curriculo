@@ -3,10 +3,8 @@ body {
     height: 735px;
     margin: 0px;
     background-repeat: no-repeat;
-    overflow-y: hidden;
     cursor: default;
 }
-
 .minhaFoto {
     margin-left: 25%;
     margin-top: 20px;
@@ -17,12 +15,10 @@ body {
     border: 2px solid #FFFFFF;
     cursor: pointer;
 }
-
 .vetores {
     z-index: 0;
     position: absolute;
 }
-
 #textoNome {
     margin-top: 73px;
     margin-left: -10%;
@@ -39,7 +35,6 @@ body {
     -webkit-text-stroke-color: #000000;
     cursor: pointer;
 }
-
 #divPaginaTab {
     font-family: 'Inter';
     font-style: normal;
@@ -50,7 +45,6 @@ body {
     color: #FFFFFF;
     text-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
 }
-
 #textoOla {
     font-family: 'Birthstone';
     font-style: normal;
@@ -61,4 +55,37 @@ body {
     color: #000000;
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: #000000;
+}
+.container-botoes {
+    display: flex;
+    flex-direction: row;
+    width: 120px;
+    height: 60px;
+    flex-wrap: wrap;
+    margin-left: -60px;
+}
+.container-numeros {
+    display: flex;
+    flex-flow: row wrap;
+    width: 90px;
+}
+.caixas {
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #000000;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+}
+.container-calculadora {
+    display: flex;
+    flex-direction: column;
+}
+.visor-calculadora {
+    width: 120px;
+    height: 40px;
+    background-color: #E793F4;
+    margin-left: -60px;
+    border: 1px solid #000000;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
