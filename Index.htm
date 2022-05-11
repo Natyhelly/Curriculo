@@ -8,18 +8,10 @@
         Currículo Nathy
     </title>
     <link rel="stylesheet" href="CSS/nathy.css">
-    <link rel="stylesheet" href="CSS/bootstrap/bootstrap.min.css">
-    <script src="Scripts/bootstrap/bootstrap.bundle.min.js"> </script>
-    <script type="text/javascript">
-        function alteraTextPaginaTab(text) {
-            document.getElementById('textPaginaTab').innerText = text;
-        }
-
-        function mensagemNaFoto(mensagem) {
-            alert(mensagem);
-        }
-        
-    </script>
+    <script src="Scripts/nathy.js"></script>
+    <link rel="stylesheet" href="CSS/bootstrap/bootstrap.css">
+    <script src="Scripts/bootstrap/bootstrap.bundle.min.js"></script>
+  
 </head>
 <body>
     <div id="primeiraDiv" style="width: 100%; height: 250px">
@@ -59,7 +51,7 @@
 
         </div>
     </div>
-    <div id="quartaDiv" style="width: 100%; padding-top: 60px; border-top: 2px solid #D1FFFC">
+    <div id="quartaDiv" style="width: 100%; border-top: 2px solid #D1FFFC">
 
 
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -88,33 +80,36 @@
             </div>
 
             <div class="tab-pane fade" id="pills-calculator" role="tabpanel" aria-labelledby="pills-calculator-tab" style="padding-left: 50%">
+                <input id="primeiroNumero" type="hidden" />
+                <input id="segundoNumero" type="hidden" />
+                <input id="operador" type="hidden" />
                 <div class="container-calculadora">
-                    <div class="visor-calculadora"></div>
+                    <div id="visor" class="visor-calculadora"></div>
                     <div class="container-botoes">
                         <div class="container-numeros">
-                            <div class="caixas"> C </div>
-                            <div class="caixas"> / </div>
-                            <div class="caixas"> * </div>
-                            <div class="caixas"> 7 </div>
-                            <div class="caixas"> 8 </div>
-                            <div class="caixas"> 9 </div>
-                            <div class="caixas"> 4 </div>
-                            <div class="caixas"> 5 </div>
-                            <div class="caixas"> 6 </div>
-                            <div class="caixas"> 1 </div>
-                            <div class="caixas"> 2 </div>
-                            <div class="caixas"> 3 </div>
-                            <div class="caixas" style="width: 60px"> 0 </div>
-                            <div class="caixas"> , </div>
+                            <div onclick="montarCalculo('C','operador')" class="caixas"> C </div>
+                            <div onclick="montarCalculo('/','operador')" class="caixas"> / </div>
+                            <div onclick="montarCalculo('*','operador')" class="caixas"> * </div>
+                            <div onclick="montarCalculo('7','numero')" class="caixas"> 7 </div>
+                            <div onclick="montarCalculo('8','numero')" class="caixas"> 8 </div>
+                            <div onclick="montarCalculo('9','numero')" class="caixas"> 9 </div>
+                            <div onclick="montarCalculo('4','numero')" class="caixas"> 4 </div>
+                            <div onclick="montarCalculo('5','numero')" class="caixas"> 5 </div>
+                            <div onclick="montarCalculo('6','numero')" class="caixas"> 6 </div>
+                            <div onclick="montarCalculo('1','numero')" class="caixas"> 1 </div>
+                            <div onclick="montarCalculo('2','numero')" class="caixas"> 2 </div>
+                            <div onclick="montarCalculo('3','numero')" class="caixas"> 3 </div>
+                            <div onclick="montarCalculo('0','numero')" class="caixas" style="width: 60px"> 0 </div>
+                            <div onclick="montarCalculo(',','operador')" class="caixas"> , </div>
                         </div>
                         <div class="container-simbolo">
-                            <div class="caixas"> - </div>
-                            <div class="caixas" style="padding-top: 50%; width: 30px; height: 60px"> + </div>
-                            <div class="caixas" style="padding-top: 50%; width: 30px; height: 60px"> = </div>
+                            <div onclick="montarCalculo('-','operador')" class="caixas"> - </div>
+                            <div onclick="montarCalculo('+','operador')" class="caixas" style="padding-top: 50%; width: 30px; height: 60px"> + </div>
+                            <div onclick="montarCalculo('=','operador')" class="caixas" style="padding-top: 50%; width: 30px; height: 60px"> = </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             </div>
         </div>
