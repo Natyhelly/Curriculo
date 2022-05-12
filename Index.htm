@@ -83,6 +83,8 @@
                 <input id="primeiroNumero" type="hidden" />
                 <input id="segundoNumero" type="hidden" />
                 <input id="operador" type="hidden" />
+                <input id="total" type="hidden"/>
+
                 <div class="container-calculadora">
                     <div id="visor" class="visor-calculadora"></div>
                     <div class="container-botoes">
@@ -100,7 +102,7 @@
                             <div onclick="montarCalculo('2','numero')" class="caixas"> 2 </div>
                             <div onclick="montarCalculo('3','numero')" class="caixas"> 3 </div>
                             <div onclick="montarCalculo('0','numero')" class="caixas" style="width: 60px"> 0 </div>
-                            <div onclick="montarCalculo(',','operador')" class="caixas"> , </div>
+                            <div onclick="montarCalculo(',','numero')" class="caixas"> , </div>
                         </div>
                         <div class="container-simbolo">
                             <div onclick="montarCalculo('-','operador')" class="caixas"> - </div>

@@ -29,7 +29,8 @@ function montarCalculo(valor, tipo) {
     var primeiroNumero = document.getElementById('primeiroNumero').innerText;
     var segundoNumero = document.getElementById('segundoNumero').innerText;
     var operador = document.getElementById('operador').innerText;
-    var calcular = '';
+    var resultadoCalcular = '';
+    var total = document.getElementById('total').innerText;
      
     if (valor == 'C') {
         document.getElementById('visor').innerText = '';
@@ -49,9 +50,16 @@ function montarCalculo(valor, tipo) {
 
     if (operador == '') {
         if (tipo == 'numero') {
-            document.getElementById('primeiroNumero').innerText += valor;
-            document.getElementById('visor').innerText += valor;
-            return;
+            if (total == '') {
+                document.getElementById('primeiroNumero').innerText += valor;
+                document.getElementById('visor').innerText += valor;
+                return;
+            } else {
+                document.getElementById('primeiroNumero').innerText = valor;
+                document.getElementById('visor').innerText = valor;
+                document.getElementById('total').innerText = '';
+                return;
+            }
         } else {
             document.getElementById('operador').innerText = valor;
             document.getElementById('visor').innerText += valor;
@@ -59,14 +67,10 @@ function montarCalculo(valor, tipo) {
         }
     } else {
         if (tipo == 'numero') {
-            if (segundoNumero == '' && valor != '0') {
+            if ((segundoNumero == '' && valor != '0') || segundoNumero != '') {
                 document.getElementById('segundoNumero').innerText += valor;
                 document.getElementById('visor').innerText += valor;
-            } else if (segundoNumero != '') {
-                document.getElementById('segundoNumero').innerText += valor;
-                document.getElementById('visor').innerText += valor;
-                
-            }
+            } 
             return;
         }
 
@@ -74,9 +78,21 @@ function montarCalculo(valor, tipo) {
             document.getElementById('operador').innerText = valor;
             document.getElementById('visor').innerText = visor.substring(0, visor.length - 1) + valor;
         } else {
-            document.getElementById('visor').innerText = calcular(operador, primeiroNumero, segundoNumero);
-            document.getElementById('primeiroNumero').innerText = calcular(operador, primeiroNumero, segundoNumero);
+            resultadoCalcular = calcular(operador, primeiroNumero, segundoNumero);
+            document.getElementById('primeiroNumero').innerText = resultadoCalcular;
+            document.getElementById('segundoNumero').innerText = '';
+
+            if (valor == '=') {
+                document.getElementById('visor').innerText = resultadoCalcular;
+                document.getElementById('operador').innerText = '';
+                document.getElementById('total').innerText = resultadoCalcular;
+            } else {
+                document.getElementById('visor').innerText = resultadoCalcular + valor;
+                document.getElementById('operador').innerText = valor;
+            } 
         }
+
+       
     }
     
     
