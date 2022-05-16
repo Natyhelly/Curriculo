@@ -91,3 +91,28 @@ body {
     overflow: hidden;
     padding: 5px 0 0 5px;
 }
+.container-jogo {
+    display: flex;
+    flex-direction: row;
+    padding-top: 50px;
+}
+.botoesX-jogo {
+    display: flex;
+    flex-flow: row wrap;
+    width: 300px;
+    height: 300px;
+}
+.botoesO-jogo {
+    display: flex;
+    flex-flow: row wrap;
+    width: 300px;
+    height: 300px;
+}
+.caixas-jogo {
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    border: 1px solid #000000;
+    font-size: 60px;
+}

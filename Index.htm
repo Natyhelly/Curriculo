@@ -61,6 +61,9 @@
             <li class="nav-item" role="presentation">
                 <button onclick="alteraTextPaginaTab('Calculadora')" class="nav-link" id="pills-calculator-tab" data-bs-toggle="pill" data-bs-target="#pills-calculator" type="button" role="tab" aria-controls="pills-calculator" aria-selected="false">Calculadora</button>
             </li>
+            <li class="nav-item" role="presentation">
+                <button onclick="alteraTextPaginaTab('Jogo da Velha')" class="nav-link" id="pills-jogo-tab" data-bs-toggle="pill" data-bs-target="#pills-jogo" type="button" role="tab" aria-controls="pills-jogo" aria-selected="false">Jogo da Velha</button>
+            </li>
         </ul>
 
         <div class="tab-content" id="pills-tabContent">
@@ -80,10 +83,10 @@
             </div>
 
             <div class="tab-pane fade" id="pills-calculator" role="tabpanel" aria-labelledby="pills-calculator-tab" style="padding-left: 50%">
-                <input id="primeiroNumero" value ="0" type="hidden" />
+                <input id="primeiroNumero" value="0" type="hidden" />
                 <input id="segundoNumero" type="hidden" />
                 <input id="operador" type="hidden" />
-                <input id="total" type="hidden"/>
+                <input id="total" type="hidden" />
 
                 <div class="container-calculadora">
                     <div id="visor" class="visor-calculadora">0</div>
@@ -112,6 +115,32 @@
                     </div>
                 </div>
 
+            </div>
+            <div class="tab-pane fade" id="pills-jogo" role="tabpanel" aria-labelledby="pills-jogo-tab" style="padding-left: 40%">
+                <div class="container-jogo">
+                    <div class="botoesX-jogo">
+                        <div onclick="" class="caixas-jogo"> X </div>
+                        <div onclick="" class="caixas-jogo"> X </div>
+                        <div onclick="" class="caixas-jogo"> X </div>
+                        <div onclick="" class="caixas-jogo"> X </div>
+                        <div onclick="" class="caixas-jogo"> X </div>
+                        <div onclick="" class="caixas-jogo"> X </div>
+                        <div onclick="" class="caixas-jogo"> X </div>
+                        <div onclick="" class="caixas-jogo"> X </div>
+                        <div onclick="" class="caixas-jogo"> X </div>
+                    </div>
+                    <!--<div class="botoesO-jogo">
+                        <div onclick="" class="caixas-jogo"> O </div>
+                        <div onclick="" class="caixas-jogo"> O </div>
+                        <div onclick="" class="caixas-jogo"> O </div>
+                        <div onclick="" class="caixas-jogo"> O </div>
+                        <div onclick="" class="caixas-jogo"> O </div>
+                        <div onclick="" class="caixas-jogo"> O </div>
+                        <div onclick="" class="caixas-jogo"> O </div>
+                        <div onclick="" class="caixas-jogo"> O </div>
+                        <div onclick="" class="caixas-jogo"> O </div>
+                    </div>--> 
+                </div>
             </div>
             </div>
         </div>
