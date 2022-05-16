@@ -19,7 +19,12 @@ function calcular(operador, valor1, valor2) {
             var resultado = valor1 - valor2;
         } else {
             if (operador == '*') {
-                var resultado = (valor1 * valor2).toPrecision(1);
+                if (valor1.toString().substring(0, 2) == '0.' && valor2.toString().substring(0, 2) == '0.') {
+                    var resultado = (valor1 * valor2).toFixed(valor1.toString().length - 2 + valor2.toString().length - 2);
+                } else {
+                    var resultado = (valor1 * valor2);
+                }
+
             } else {
                 var resultado = (valor1 / valor2).toPrecision(13);
             }
@@ -86,9 +91,12 @@ function montarCalculo(valor, tipo) {
                 return;
             }
         } else { // Se for operador, acrescenta ele no visor.
-            document.getElementById('operador').innerText = valor;
-            document.getElementById('visor').innerText += valor;
-            return;
+            if (valor !== '=') {
+                document.getElementById('operador').innerText = valor;
+                document.getElementById('visor').innerText += valor;
+                return;
+            }
+
         }
     } else { // Se já tiver operador
         if (tipo == 'numero') {
@@ -114,8 +122,18 @@ function montarCalculo(valor, tipo) {
             return;
         }
         if (segundoNumero == '') { // Se já tiver operador e vier outro operador, substitui o mesmo.
-            document.getElementById('operador').innerText = valor;
-            document.getElementById('visor').innerText = visor.substring(0, visor.length - 1) + valor;
+            if (valor == '=') {
+                resultadoCalcular = calcular(operador, parseFloat(primeiroNumero.replace(',', '.')), parseFloat(primeiroNumero.replace(',', '.')));
+                document.getElementById('primeiroNumero').innerText = resultadoCalcular;
+                document.getElementById('visor').innerText = resultadoCalcular;
+                document.getElementById('operador').innerText = '';
+                document.getElementById('total').innerText = resultadoCalcular;
+            } else {
+                document.getElementById('operador').innerText = valor;
+                document.getElementById('visor').innerText = visor.substring(0, visor.length - 1) + valor;
+            }
+
+
         } else { // Se já tiver o segundo número, mostra o resultado e limpa o segundo número.
             resultadoCalcular = calcular(operador, parseFloat(primeiroNumero.replace(',', '.')), parseFloat(segundoNumero.replace(',', '.')));
             document.getElementById('primeiroNumero').innerText = resultadoCalcular;
