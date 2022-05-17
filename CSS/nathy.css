@@ -109,10 +109,20 @@ body {
     height: 300px;
 }
 .caixas-jogo {
-    background-color: white;
     width: 100px;
     height: 100px;
     text-align: center;
-    border: 1px solid #000000;
     font-size: 60px;
+    cursor: pointer;
+}
+.borda-lr {
+    border-left: 2px solid #000000;
+    border-right: 2px solid #000000;
+}
+.borda-tb {
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+}
+.borda-all {
+    border: 2px solid #000000;
 }

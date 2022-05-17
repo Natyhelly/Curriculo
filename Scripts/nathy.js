@@ -12,29 +12,29 @@ function calcular(operador, valor1, valor2) {
         return resultado;
     }
 
-    if (operador == '+') {
+    if (operador == '+')
         var resultado = valor1 + valor2;
-    } else {
-        if (operador == '-') {
+    else {
+        if (operador == '-')
             var resultado = valor1 - valor2;
-        } else {
+        else {
             if (operador == '*') {
-                if (valor1.toString().substring(0, 2) == '0.' && valor2.toString().substring(0, 2) == '0.') {
+                if (valor1.toString().substring(0, 2) == '0.' && valor2.toString().substring(0, 2) == '0.')
                     var resultado = (valor1 * valor2).toFixed(valor1.toString().length - 2 + valor2.toString().length - 2);
-                } else {
+                else
                     var resultado = (valor1 * valor2);
-                }
 
-            } else {
+
+            } else
                 var resultado = (valor1 / valor2).toPrecision(13);
-            }
+
         }
     }
     return resultado.toString().replace('.', ',');
 }
 
-// Função para montar o cálculo na tab calculadora.
-function montarCalculo(valor, tipo) {
+
+function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab calculadora.
 
     var visor = document.getElementById('visor').innerText;
     var primeiroNumero = document.getElementById('primeiroNumero').innerText;
@@ -153,4 +153,41 @@ function montarCalculo(valor, tipo) {
     }
 
 
+}
+
+function jogoDaVelha(casa) {
+    var proximoJogador = document.querySelector('#proximoJogador').value;
+    document.getElementById(casa).innerText = proximoJogador;
+
+    var casa1 = document.getElementById('casa-1').innerText;
+    var casa2 = document.getElementById('casa-2').innerText;
+    var casa3 = document.getElementById('casa-3').innerText;
+    var casa4 = document.getElementById('casa-4').innerText;
+    var casa5 = document.getElementById('casa-5').innerText;
+    var casa6 = document.getElementById('casa-6').innerText;
+    var casa7 = document.getElementById('casa-7').innerText;
+    var casa8 = document.getElementById('casa-8').innerText;
+    var casa9 = document.getElementById('casa-9').innerText;
+
+    if (proximoJogador == 'X')
+        document.querySelector('#proximoJogador').value = 'O';
+    else
+        document.querySelector('#proximoJogador').value = 'X';
+
+    if (casa1 == 'X' && casa2 == 'X' && casa3 == 'X')
+        alert('Venceu!!');
+    else if (casa4 == 'X' && casa5 == 'X' && casa6 == 'X')
+        alert('Venceu!!');
+    else if (casa7 == 'X' && casa8 == 'X' && casa9 == 'X')
+        alert('Venceu!!');
+    else if (casa1 == 'X' && casa4 == 'X' && casa7 == 'X')
+        alert('Venceu!!');
+    else if (casa2 == 'X' && casa5 == 'X' && casa8 == 'X')
+        alert('Venceu!!');
+    else if (casa3 == 'X' && casa6 == 'X' && casa9 == 'X')
+        alert('Venceu!!');
+    else if (casa1 == 'X' && casa5 == 'X' && casa9 == 'X')
+        alert('Venceu!!');
+    else if (casa3 == 'X' && casa5 == 'X' && casa7 == 'X')
+        alert('Venceu!!');
 }
