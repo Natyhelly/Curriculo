@@ -104,22 +104,24 @@
                             <div onclick="montarCalculo('1','numero')" class="caixas"> 1 </div>
                             <div onclick="montarCalculo('2','numero')" class="caixas"> 2 </div>
                             <div onclick="montarCalculo('3','numero')" class="caixas"> 3 </div>
-                            <div onclick="montarCalculo('0','numero')" class="caixas" style="width: 60px"> 0 </div>
+                            <div onclick="montarCalculo('0','numero')" class="caixas" style="width: 100px"> 0 </div>
                             <div onclick="montarCalculo(',','numero')" class="caixas"> , </div>
                         </div>
                         <div class="container-simbolo">
                             <div onclick="montarCalculo('-','operador')" class="caixas"> - </div>
-                            <div onclick="montarCalculo('+','operador')" class="caixas" style="padding-top: 50%; width: 30px; height: 60px"> + </div>
-                            <div onclick="montarCalculo('=','operador')" class="caixas" style="padding-top: 50%; width: 30px; height: 60px"> = </div>
+                            <div onclick="montarCalculo('+','operador')" class="caixas" style="padding-top: 50%; width: 50px; height: 100px"> + </div>
+                            <div onclick="montarCalculo('=','operador')" class="caixas" style="padding-top: 50%; width: 50px; height: 100px"> = </div>
                         </div>
                     </div>
                 </div>
 
             </div>
             <div class="tab-pane fade" id="pills-jogo" role="tabpanel" aria-labelledby="pills-jogo-tab" style="padding-left: 40%">
-
+                <div id="msg-vencedor"></div>
                 <div class="container-jogo">
-                    <input id="proximoJogador" value="X" type="hidden" />
+                    <input id="proximoValor" value="X" type="hidden" />
+                    <input id="casasPreenchidas" value="" type="hidden" />
+
                     <div class="botoesX-jogo">
                         <div id="casa-1" onclick="jogoDaVelha('casa-1')" class="caixas-jogo"></div>
                         <div id="casa-2" onclick="jogoDaVelha('casa-2')" class="caixas-jogo borda-lr"></div>
@@ -130,8 +132,10 @@
                         <div id="casa-7" onclick="jogoDaVelha('casa-7')" class="caixas-jogo"></div>
                         <div id="casa-8" onclick="jogoDaVelha('casa-8')" class="caixas-jogo borda-lr"></div>
                         <div id="casa-9" onclick="jogoDaVelha('casa-9')" class="caixas-jogo"></div>
-                    </div>
 
+                        <div id="reiniciar-jogo" onclick="jogoDaVelha('reiniciar-jogo')">Reiniciar Jogo</div>
+                    </div>
+                    
                 </div>
             </div>
             </div>

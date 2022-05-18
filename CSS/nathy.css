@@ -59,7 +59,7 @@ body {
 .container-botoes {
     display: flex;
     flex-direction: row;
-    width: 120px;
+    width: 200px;
     height: 60px;
     flex-wrap: wrap;
     margin-left: -60px;
@@ -67,34 +67,38 @@ body {
 .container-numeros {
     display: flex;
     flex-flow: row wrap;
-    width: 90px;
+    width: 150px;
 }
 .caixas {
     background-color: white;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     text-align: center;
+    padding: 4px 0 0 0;
+    font-size: 25px;
     border: 1px solid #000000;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
 .container-calculadora {
     display: flex;
     flex-direction: column;
+    padding-top: 45px;
 }
 .visor-calculadora {
-    width: 120px;
-    height: 40px;
+    width: 200px;
+    height: 60px;
     background-color: #E793F4;
     margin-left: -60px;
     border: 1px solid #000000;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
     overflow: hidden;
-    padding: 5px 0 0 5px;
+    padding: 8px 0 0 5px;
+    font-size: 25px;
 }
 .container-jogo {
     display: flex;
     flex-direction: row;
-    padding-top: 50px;
+    padding-top: 45px;
 }
 .botoesX-jogo {
     display: flex;
@@ -125,4 +129,29 @@ body {
 }
 .borda-all {
     border: 2px solid #000000;
+}
+#reiniciar-jogo {
+    text-align: center;
+    font-family: 'Lemonada';
+    font-size: 15px;
+    cursor: pointer;
+    border: 2px solid #000000;
+    background-color: lightgreen;
+    width: 140px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 80px;
+}
+#msg-vencedor {
+    z-index: 9;
+    margin-left: 200px;
+    font-family: 'Birthstone';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 100px;
+    line-height: 44px;
+    letter-spacing: 0.1em;
+    color: #000000;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #000000;
 }
