@@ -174,19 +174,6 @@ function jogoDaVelha(casa) {
         document.getElementById(casa).disabled = true;
     }
 
-    //if (casa == document.getElementById('reiniciar-jogo')) {
-    //    document.getElementById('casa-1').innerText = '';
-    //    document.getElementById('casa-2').innerText = '';
-    //    document.getElementById('casa-3').innerText = '';
-    //    document.getElementById('casa-4').innerText = '';
-    //    document.getElementById('casa-5').innerText = '';
-    //    document.getElementById('casa-6').innerText = '';
-    //    document.getElementById('casa-7').innerText = '';
-    //    document.getElementById('casa-8').innerText = '';
-    //    document.getElementById('casa-9').innerText = '';
-    //}
-        
-
     var casa1 = document.getElementById('casa-1').innerText;
     var casa2 = document.getElementById('casa-2').innerText;
     var casa3 = document.getElementById('casa-3').innerText;
@@ -197,85 +184,60 @@ function jogoDaVelha(casa) {
     var casa8 = document.getElementById('casa-8').innerText;
     var casa9 = document.getElementById('casa-9').innerText;
 
-    
     if (casa1 == 'X' && casa2 == 'X' && casa3 == 'X')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
     else if (casa4 == 'X' && casa5 == 'X' && casa6 == 'X')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
     else if (casa7 == 'X' && casa8 == 'X' && casa9 == 'X')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
     else if (casa1 == 'X' && casa4 == 'X' && casa7 == 'X')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
     else if (casa2 == 'X' && casa5 == 'X' && casa8 == 'X')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
     else if (casa3 == 'X' && casa6 == 'X' && casa9 == 'X')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
     else if (casa1 == 'X' && casa5 == 'X' && casa9 == 'X')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
     else if (casa3 == 'X' && casa5 == 'X' && casa7 == 'X')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
 
     else if (casa1 == 'O' && casa2 == 'O' && casa3 == 'O')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
     else if (casa4 == 'O' && casa5 == 'O' && casa6 == 'O')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
     else if (casa7 == 'O' && casa8 == 'O' && casa9 == 'O')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
     else if (casa1 == 'O' && casa4 == 'O' && casa7 == 'O')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
     else if (casa2 == 'O' && casa5 == 'O' && casa8 == 'O')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
     else if (casa3 == 'O' && casa6 == 'O' && casa9 == 'O')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
     else if (casa1 == 'O' && casa5 == 'O' && casa9 == 'O')
-        alert('Venceu!!');
+        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
     else if (casa3 == 'O' && casa5 == 'O' && casa7 == 'O')
-        alert('Venceu!!');
-    
-    else if (document.querySelector('#casasPreenchidas').value.length == 9)
-        alert('Ninguem Venceu =[');
-}
-
-function jogoAcabou() {
-    var mensagemVencedor = document.getElementById('msg-vencedor').innerText = '';
-
-    if (document.querySelector('#casasPreenchidas').value.length == 9)
-        document.getElementById(casa).disabled = true;
-
-    if (casa1 == 'X' && casa2 == 'X' && casa3 == 'X')
-        mensagemVencedor += 'Parabéns X, você venceu!';
-    else if (casa4 == 'X' && casa5 == 'X' && casa6 == 'X')
-        mensagemVencedor += 'Parabéns X, você venceu!';
-    else if (casa7 == 'X' && casa8 == 'X' && casa9 == 'X')
-        mensagemVencedor += 'Parabéns X, você venceu!';
-    else if (casa1 == 'X' && casa4 == 'X' && casa7 == 'X')
-        mensagemVencedor += 'Parabéns X, você venceu!';
-    else if (casa2 == 'X' && casa5 == 'X' && casa8 == 'X')
-        mensagemVencedor += 'Parabéns X, você venceu!';
-    else if (casa3 == 'X' && casa6 == 'X' && casa9 == 'X')
-        mensagemVencedor += 'Parabéns X, você venceu!';
-    else if (casa1 == 'X' && casa5 == 'X' && casa9 == 'X')
-        mensagemVencedor += 'Parabéns X, você venceu!';
-    else if (casa3 == 'X' && casa5 == 'X' && casa7 == 'X')
-        mensagemVencedor += 'Parabéns X, você venceu!';
-
-    else if (casa1 == 'O' && casa2 == 'O' && casa3 == 'O')
-        mensagemVencedor += 'Parabéns O, você venceu!';
-    else if (casa4 == 'O' && casa5 == 'O' && casa6 == 'O')
-        mensagemVencedor += 'Parabéns O, você venceu!';
-    else if (casa7 == 'O' && casa8 == 'O' && casa9 == 'O')
-        mensagemVencedor += 'Parabéns O, você venceu!';
-    else if (casa1 == 'O' && casa4 == 'O' && casa7 == 'O')
-        mensagemVencedor += 'Parabéns O, você venceu!';
-    else if (casa2 == 'O' && casa5 == 'O' && casa8 == 'O')
-        mensagemVencedor += 'Parabéns O, você venceu!';
-    else if (casa3 == 'O' && casa6 == 'O' && casa9 == 'O')
-        mensagemVencedor += 'Parabéns O, você venceu!';
-    else if (casa1 == 'O' && casa5 == 'O' && casa9 == 'O')
-        mensagemVencedor += 'Parabéns O, você venceu!';
-    else if (casa3 == 'O' && casa5 == 'O' && casa7 == 'O')
-        mensagemVencedor += 'Parabéns O, você venceu!';
+        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
 
     else if (document.querySelector('#casasPreenchidas').value.length == 9)
-        mensagemVencedor += 'Ninguém venceu =[';
+        document.getElementById('msg-vencedor').innerText = 'Game over :(';
+
+    return;
 }
+
+function reiniciarJogo() {
+
+    document.getElementById('casa-1').innerText = '';
+    document.getElementById('casa-2').innerText = '';
+    document.getElementById('casa-3').innerText = '';
+    document.getElementById('casa-4').innerText = '';
+    document.getElementById('casa-5').innerText = '';
+    document.getElementById('casa-6').innerText = '';
+    document.getElementById('casa-7').innerText = '';
+    document.getElementById('casa-8').innerText = '';
+    document.getElementById('casa-9').innerText = '';
+    document.querySelector('#proximoValor').value = 'X';
+    document.querySelector('#casasPreenchidas').value = '';
+    document.getElementById('msg-vencedor').innerText = '';
+
+}
+
