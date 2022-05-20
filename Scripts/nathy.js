@@ -160,9 +160,10 @@ function jogoDaVelha(casa) {
 
     //busca conteúdo da casa
     var conteudoCasa = document.getElementById(casa).innerText;
+    var casaBloqueada = document.getElementById(casa).getAttribute('disabled') == 'disabled';
 
     //valida conteudo da casa 
-    if (conteudoCasa == '') {
+    if (conteudoCasa == '' && !casaBloqueada) {
         document.querySelector('#casasPreenchidas').value += 1;
         document.getElementById(casa).innerText = proximoValor;
 
@@ -171,7 +172,8 @@ function jogoDaVelha(casa) {
         else
             document.querySelector('#proximoValor').value = 'X';
 
-        document.getElementById(casa).disabled = true;
+        document.querySelector('#' + casa).setAttribute('disabled', 'disabled');
+
     }
 
     var casa1 = document.getElementById('casa-1').innerText;
@@ -185,41 +187,41 @@ function jogoDaVelha(casa) {
     var casa9 = document.getElementById('casa-9').innerText;
 
     if (casa1 == 'X' && casa2 == 'X' && casa3 == 'X')
-        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
+        vencedor('X');
     else if (casa4 == 'X' && casa5 == 'X' && casa6 == 'X')
-        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
+        vencedor('X');
     else if (casa7 == 'X' && casa8 == 'X' && casa9 == 'X')
-        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
+        vencedor('X');
     else if (casa1 == 'X' && casa4 == 'X' && casa7 == 'X')
-        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
+        vencedor('X');
     else if (casa2 == 'X' && casa5 == 'X' && casa8 == 'X')
-        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
+        vencedor('X');
     else if (casa3 == 'X' && casa6 == 'X' && casa9 == 'X')
-        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
+        vencedor('X');
     else if (casa1 == 'X' && casa5 == 'X' && casa9 == 'X')
-        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
+        vencedor('X');
     else if (casa3 == 'X' && casa5 == 'X' && casa7 == 'X')
-        document.getElementById('msg-vencedor').innerText = 'X ganhou!!';
+        vencedor('X');
 
     else if (casa1 == 'O' && casa2 == 'O' && casa3 == 'O')
-        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
+        vencedor('O');
     else if (casa4 == 'O' && casa5 == 'O' && casa6 == 'O')
-        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
+        vencedor('O');
     else if (casa7 == 'O' && casa8 == 'O' && casa9 == 'O')
-        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
+        vencedor('O');
     else if (casa1 == 'O' && casa4 == 'O' && casa7 == 'O')
-        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
+        vencedor('O');
     else if (casa2 == 'O' && casa5 == 'O' && casa8 == 'O')
-        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
+        vencedor('O');
     else if (casa3 == 'O' && casa6 == 'O' && casa9 == 'O')
-        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
+        vencedor('O');
     else if (casa1 == 'O' && casa5 == 'O' && casa9 == 'O')
-        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
+        vencedor('O');
     else if (casa3 == 'O' && casa5 == 'O' && casa7 == 'O')
-        document.getElementById('msg-vencedor').innerText = 'O ganhou!!';
+        vencedor('O')
 
     else if (document.querySelector('#casasPreenchidas').value.length == 9)
-        document.getElementById('msg-vencedor').innerText = 'Game over :(';
+        vencedor('');
 
     return;
 }
@@ -235,9 +237,49 @@ function reiniciarJogo() {
     document.getElementById('casa-7').innerText = '';
     document.getElementById('casa-8').innerText = '';
     document.getElementById('casa-9').innerText = '';
+
     document.querySelector('#proximoValor').value = 'X';
     document.querySelector('#casasPreenchidas').value = '';
     document.getElementById('msg-vencedor').innerText = '';
 
+    document.querySelector('#casa-1').removeAttribute('disabled');
+    document.querySelector('#casa-2').removeAttribute('disabled');
+    document.querySelector('#casa-3').removeAttribute('disabled');
+    document.querySelector('#casa-4').removeAttribute('disabled');
+    document.querySelector('#casa-5').removeAttribute('disabled');
+    document.querySelector('#casa-6').removeAttribute('disabled');
+    document.querySelector('#casa-7').removeAttribute('disabled');
+    document.querySelector('#casa-8').removeAttribute('disabled');
+    document.querySelector('#casa-9').removeAttribute('disabled');
+
+}
+
+function vencedor(jogador) {
+    //let casas = (document.querySelector('#casa-1'),
+    //    document.querySelector('#casa-2'),
+    //    document.querySelector('#casa-3'),
+    //    document.querySelector('#casa-4'),
+    //    document.querySelector('#casa-5'),
+    //    document.querySelector('#casa-6'),
+    //    document.querySelector('#casa-7'),
+    //    document.querySelector('#casa-8'),
+    //    document.querySelector('#casa-9'));
+
+    if (jogador == 'X' || jogador == 'O') {
+        document.querySelector('#msg-vencedor').innerText = jogador + ' ganhou!!';
+
+        document.querySelector('#casa-1').setAttribute('disabled', 'disabled');
+        document.querySelector('#casa-2').setAttribute('disabled', 'disabled');
+        document.querySelector('#casa-3').setAttribute('disabled', 'disabled');
+        document.querySelector('#casa-4').setAttribute('disabled', 'disabled');
+        document.querySelector('#casa-5').setAttribute('disabled', 'disabled');
+        document.querySelector('#casa-6').setAttribute('disabled', 'disabled');
+        document.querySelector('#casa-7').setAttribute('disabled', 'disabled');
+        document.querySelector('#casa-8').setAttribute('disabled', 'disabled');
+        document.querySelector('#casa-9').setAttribute('disabled', 'disabled');
+        /*return jogador + ' ganhou!!';*/
+    } else
+        document.getElementById('msg-vencedor').innerText = 'Game over :(';
+    
 }
 
