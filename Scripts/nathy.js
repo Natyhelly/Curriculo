@@ -63,8 +63,15 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
             document.getElementById('primeiroNumero').innerText += valor;
             document.getElementById('visor').innerText += valor;
         }
-        return;
+
+    } else {
+        if (tipo == 'operador' && valor == '<-') {
+            document.getElementById('visor').innerText = '0';
+            document.getElementById('primeiroNumero').innerText = '';
+        }
+
     }
+    
 
     // Acrescenta outro número se o operador e o total estiver vazio. 
     if (operador == '') {
@@ -91,10 +98,14 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
                 return;
             }
         } else { // Se for operador, acrescenta ele no visor.
-            if (valor !== '=') {
+            if (valor !== '=' && valor !== '<-') {
                 document.getElementById('operador').innerText = valor;
                 document.getElementById('visor').innerText += valor;
                 return;
+            }
+            if (valor == '<-') {
+                document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
+                document.getElementById('primeiroNumero').innerText = visor.substring(0, visor.length - 1)
             }
 
         }
@@ -132,8 +143,6 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
                 document.getElementById('operador').innerText = valor;
                 document.getElementById('visor').innerText = visor.substring(0, visor.length - 1) + valor;
             }
-
-
         } else { // Se já tiver o segundo número, mostra o resultado e limpa o segundo número.
             resultadoCalcular = calcular(operador, parseFloat(primeiroNumero.replace(',', '.')), parseFloat(segundoNumero.replace(',', '.')));
             document.getElementById('primeiroNumero').innerText = resultadoCalcular;
@@ -148,12 +157,69 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
                 document.getElementById('operador').innerText = valor;
             }
         }
-
-
     }
-
-
 }
+
+document.addEventListener("keydown", function pressionarTecla(tecla) {
+    if (event.defaultPrevented)
+        return; // Do nothing if the event was already processed
+
+    switch (tecla.key) {
+        case 'Enter':
+            document.querySelector("#botao-igual").click();
+            break;
+        case 'Escape':
+            document.querySelector("#botao-reset").click();
+            break;
+        case '/':
+            document.querySelector("#botao-dividir").click();
+            break;
+        case '*':
+            document.querySelector("#botao-vezes").click();
+            break;
+        case '-':
+            document.querySelector("#botao-menos").click();
+            break;
+        case '+':
+            document.querySelector("#botao-mais").click();
+            break;
+        case ',':
+            document.querySelector("#botao-decimal").click();
+            break;
+        case '0':
+            document.querySelector("#botao-0").click();
+            break;
+        case '1':
+            document.querySelector("#botao-1").click();
+            break;
+        case '2':
+            document.querySelector("#botao-2").click();
+            break;
+        case '3':
+            document.querySelector("#botao-3").click();
+            break;
+        case '4':
+            document.querySelector("#botao-4").click();
+            break;
+        case '5':
+            document.querySelector("#botao-5").click();
+            break;
+        case '6':
+            document.querySelector("#botao-6").click();
+            break;
+        case '7':
+            document.querySelector("#botao-7").click();
+            break;
+        case '8':
+            document.querySelector("#botao-8").click();
+            break;
+        case '9':
+            document.querySelector("#botao-9").click();
+            break;
+        default:
+            return; // Quit when this doesn't handle the key event.
+    }
+});
 
 function jogoDaVelha(casa) {
     var proximoValor = document.querySelector('#proximoValor').value;
@@ -227,59 +293,25 @@ function jogoDaVelha(casa) {
 }
 
 function reiniciarJogo() {
-
-    document.getElementById('casa-1').innerText = '';
-    document.getElementById('casa-2').innerText = '';
-    document.getElementById('casa-3').innerText = '';
-    document.getElementById('casa-4').innerText = '';
-    document.getElementById('casa-5').innerText = '';
-    document.getElementById('casa-6').innerText = '';
-    document.getElementById('casa-7').innerText = '';
-    document.getElementById('casa-8').innerText = '';
-    document.getElementById('casa-9').innerText = '';
-
+    for (let i = 1; i <= 9; i++) {
+        document.getElementById('casa-' + i.toString()).innerText = '';
+        document.querySelector('#casa-' + i.toString()).removeAttribute('disabled');
+    }
     document.querySelector('#proximoValor').value = 'X';
     document.querySelector('#casasPreenchidas').value = '';
     document.getElementById('msg-vencedor').innerText = '';
-
-    document.querySelector('#casa-1').removeAttribute('disabled');
-    document.querySelector('#casa-2').removeAttribute('disabled');
-    document.querySelector('#casa-3').removeAttribute('disabled');
-    document.querySelector('#casa-4').removeAttribute('disabled');
-    document.querySelector('#casa-5').removeAttribute('disabled');
-    document.querySelector('#casa-6').removeAttribute('disabled');
-    document.querySelector('#casa-7').removeAttribute('disabled');
-    document.querySelector('#casa-8').removeAttribute('disabled');
-    document.querySelector('#casa-9').removeAttribute('disabled');
-
 }
 
 function vencedor(jogador) {
-    //let casas = (document.querySelector('#casa-1'),
-    //    document.querySelector('#casa-2'),
-    //    document.querySelector('#casa-3'),
-    //    document.querySelector('#casa-4'),
-    //    document.querySelector('#casa-5'),
-    //    document.querySelector('#casa-6'),
-    //    document.querySelector('#casa-7'),
-    //    document.querySelector('#casa-8'),
-    //    document.querySelector('#casa-9'));
 
     if (jogador == 'X' || jogador == 'O') {
         document.querySelector('#msg-vencedor').innerText = jogador + ' ganhou!!';
 
-        document.querySelector('#casa-1').setAttribute('disabled', 'disabled');
-        document.querySelector('#casa-2').setAttribute('disabled', 'disabled');
-        document.querySelector('#casa-3').setAttribute('disabled', 'disabled');
-        document.querySelector('#casa-4').setAttribute('disabled', 'disabled');
-        document.querySelector('#casa-5').setAttribute('disabled', 'disabled');
-        document.querySelector('#casa-6').setAttribute('disabled', 'disabled');
-        document.querySelector('#casa-7').setAttribute('disabled', 'disabled');
-        document.querySelector('#casa-8').setAttribute('disabled', 'disabled');
-        document.querySelector('#casa-9').setAttribute('disabled', 'disabled');
-        /*return jogador + ' ganhou!!';*/
+        for (let i = 1; i <= 9; i++) {
+            document.querySelector('#casa-' + i).setAttribute('disabled', 'disabled');
+        }
     } else
         document.getElementById('msg-vencedor').innerText = 'Game over :(';
-    
+
 }
 
