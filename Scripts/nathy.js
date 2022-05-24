@@ -58,7 +58,7 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
         if (tipo == 'numero' && valor != '0' && valor != ',') {
             document.getElementById('primeiroNumero').innerText = valor;
             document.getElementById('visor').innerText = valor;
-
+            return;
         } else if (valor == ',') {
             document.getElementById('primeiroNumero').innerText += valor;
             document.getElementById('visor').innerText += valor;
@@ -66,12 +66,12 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
 
     } else {
         if (tipo == 'operador' && valor == '<-') {
-            document.getElementById('visor').innerText = '0';
-            document.getElementById('primeiroNumero').innerText = '';
+            document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
+            document.getElementById('primeiroNumero').innerText = visor.substring(0, visor.length - 1);
         }
 
     }
-    
+
 
     // Acrescenta outro número se o operador e o total estiver vazio. 
     if (operador == '') {
@@ -130,6 +130,10 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
                 document.getElementById('segundoNumero').innerText += 0 + valor;
                 document.getElementById('visor').innerText += 0 + valor;
             }
+            if (valor == '<-') {
+                document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
+                document.getElementById('segundoNumero').innerText = visor.substring(0, visor.length - 1)
+            }
             return;
         }
         if (segundoNumero == '') { // Se já tiver operador e vier outro operador, substitui o mesmo.
@@ -139,6 +143,10 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
                 document.getElementById('visor').innerText = resultadoCalcular;
                 document.getElementById('operador').innerText = '';
                 document.getElementById('total').innerText = resultadoCalcular;
+                if (valor == '<-') {
+                    document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
+                    document.getElementById('segundoNumero').innerText = visor.substring(0, visor.length - 1)
+                }
             } else {
                 document.getElementById('operador').innerText = valor;
                 document.getElementById('visor').innerText = visor.substring(0, visor.length - 1) + valor;
@@ -167,9 +175,13 @@ document.addEventListener("keydown", function pressionarTecla(tecla) {
     switch (tecla.key) {
         case 'Enter':
             document.querySelector("#botao-igual").click();
+            /*document.querySelector("#botao-igual").style.backgroundColor = 'gray';*/
             break;
         case 'Escape':
             document.querySelector("#botao-reset").click();
+            break;
+        case 'Backspace':
+            document.querySelector("#botao-backspace").click();
             break;
         case '/':
             document.querySelector("#botao-dividir").click();
@@ -253,42 +265,39 @@ function jogoDaVelha(casa) {
     var casa9 = document.getElementById('casa-9').innerText;
 
     if (casa1 == 'X' && casa2 == 'X' && casa3 == 'X')
-        vencedor('X');
+        vencedor('O', '1', '2', '3');
     else if (casa4 == 'X' && casa5 == 'X' && casa6 == 'X')
-        vencedor('X');
+        vencedor('O', '4', '5', '6');
     else if (casa7 == 'X' && casa8 == 'X' && casa9 == 'X')
-        vencedor('X');
+        vencedor('O', '7', '8', '9');
     else if (casa1 == 'X' && casa4 == 'X' && casa7 == 'X')
-        vencedor('X');
+        vencedor('O', '1', '4', '7');
     else if (casa2 == 'X' && casa5 == 'X' && casa8 == 'X')
-        vencedor('X');
+        vencedor('O', '2', '5', '8');
     else if (casa3 == 'X' && casa6 == 'X' && casa9 == 'X')
-        vencedor('X');
+        vencedor('O', '3', '6', '9');
     else if (casa1 == 'X' && casa5 == 'X' && casa9 == 'X')
-        vencedor('X');
+        vencedor('O', '1', '5', '9');
     else if (casa3 == 'X' && casa5 == 'X' && casa7 == 'X')
-        vencedor('X');
-
+        vencedor('O', '3', '5', '7');
     else if (casa1 == 'O' && casa2 == 'O' && casa3 == 'O')
-        vencedor('O');
+        vencedor('O', '1', '2', '3');
     else if (casa4 == 'O' && casa5 == 'O' && casa6 == 'O')
-        vencedor('O');
+        vencedor('O', '4', '5', '6');
     else if (casa7 == 'O' && casa8 == 'O' && casa9 == 'O')
-        vencedor('O');
+        vencedor('O', '7', '8', '9');
     else if (casa1 == 'O' && casa4 == 'O' && casa7 == 'O')
-        vencedor('O');
+        vencedor('O', '1', '4', '7');
     else if (casa2 == 'O' && casa5 == 'O' && casa8 == 'O')
-        vencedor('O');
+        vencedor('O', '2', '5', '8');
     else if (casa3 == 'O' && casa6 == 'O' && casa9 == 'O')
-        vencedor('O');
+        vencedor('O', '3', '6', '9');
     else if (casa1 == 'O' && casa5 == 'O' && casa9 == 'O')
-        vencedor('O');
+        vencedor('O', '1', '5', '9');
     else if (casa3 == 'O' && casa5 == 'O' && casa7 == 'O')
-        vencedor('O')
-
+        vencedor('O', '3', '5', '7');
     else if (document.querySelector('#casasPreenchidas').value.length == 9)
         vencedor('');
-
     return;
 }
 
@@ -302,16 +311,16 @@ function reiniciarJogo() {
     document.getElementById('msg-vencedor').innerText = '';
 }
 
-function vencedor(jogador) {
-
+function vencedor(jogador, casa1, casa2, casa3) {
     if (jogador == 'X' || jogador == 'O') {
         document.querySelector('#msg-vencedor').innerText = jogador + ' ganhou!!';
 
         for (let i = 1; i <= 9; i++) {
             document.querySelector('#casa-' + i).setAttribute('disabled', 'disabled');
+            if (i == casa1 || i == casa2 || i == casa3)
+                document.getElementById('casa-' + i).style.backgroundColor = '#E793F4';
         }
     } else
         document.getElementById('msg-vencedor').innerText = 'Game over :(';
-
 }
 

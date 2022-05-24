@@ -78,6 +78,7 @@ body {
     font-size: 25px;
     border: 1px solid #000000;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
 }
     .caixas:active {
         background-color: gray;
@@ -133,13 +134,12 @@ body {
 #reiniciar-jogo {
     text-align: center;
     font-family: 'Lemonada';
-    font-size: 15px;
     cursor: pointer;
     border: 2px solid #000000;
     background-color: lightgreen;
     width: 140px;
     height: 30px;
-    margin-top: 10px;
+    margin-top: 25px;
     margin-left: 50px;
 }
 #msg-vencedor {
