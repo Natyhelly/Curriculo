@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', function () {
+    numeral.register('locales', 'pt-br');
+});
+
 function alteraTextPaginaTab(text) {
     document.getElementById('textPaginaTab').innerText = text;
 }
@@ -26,7 +30,7 @@ function calcular(operador, valor1, valor2) {
 
 
             } else
-                var resultado = (valor1 / valor2).toPrecision(13);
+                var resultado = (valor1 / valor2)/*.toPrecision(13)*/;
 
         }
     }
@@ -35,6 +39,7 @@ function calcular(operador, valor1, valor2) {
 
 
 function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab calculadora.
+    
 
     var visor = document.getElementById('visor').innerText;
     var primeiroNumero = document.getElementById('primeiroNumero').innerText;
@@ -53,25 +58,46 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
         return;
     }
 
+    if (valor == '<-') {
+        if (primeiroNumero == '')
+            return;
+        if (operador == '') {
+            if (primeiroNumero != '0' && primeiroNumero.length > 1) {
+                document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
+                document.getElementById('primeiroNumero').innerText = visor.substring(0, visor.length - 1);
+            } else {
+                document.getElementById('visor').innerText = '0';
+                document.getElementById('primeiroNumero').innerText = '';
+            }
+        } else {
+            if (segundoNumero != '0' && segundoNumero.length > 1) {
+                document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
+                document.getElementById('segundoNumero').innerText = segundoNumero.substring(0, segundoNumero.length - 1);
+            } else if (segundoNumero == '' && operador != '') {
+                document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
+                document.getElementById('operador').innerText = '';
+            } else {
+                document.getElementById('visor').innerText = primeiroNumero + operador;
+                document.getElementById('segundoNumero').innerText = '';
+            }
+        }
+        return;
+    }
     // Adiciona o primeiro número se não for 0.
     if (primeiroNumero == '') {
         if (tipo == 'numero' && valor != '0' && valor != ',') {
             document.getElementById('primeiroNumero').innerText = valor;
             document.getElementById('visor').innerText = valor;
-            return;
         } else if (valor == ',') {
             document.getElementById('primeiroNumero').innerText += valor;
             document.getElementById('visor').innerText += valor;
+        } else if (valor != '=') {
+            document.getElementById('primeiroNumero').innerText = '0';
+            document.getElementById('operador').innerText = valor;
+            document.getElementById('visor').innerText += valor;
         }
-
-    } else {
-        if (tipo == 'operador' && valor == '<-') {
-            document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
-            document.getElementById('primeiroNumero').innerText = visor.substring(0, visor.length - 1);
-        }
-
+        return;
     }
-
 
     // Acrescenta outro número se o operador e o total estiver vazio. 
     if (operador == '') {
@@ -79,9 +105,10 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
             if (total == '') { // Se não é pra reiniciar ainda...
                 if ((valor == ',' && primeiroNumero.indexOf(',') == -1) || valor != ',') { // ... e já tiver vírgula, não põe outra.
                     document.getElementById('primeiroNumero').innerText += valor;
+                    //var numero = document.getElementById('visor').innerText + valor;
+                    //document.getElementById('visor').innerText = numeral(numero).format('0,0');
                     document.getElementById('visor').innerText += valor;
                 }
-
                 return;
 
             } else { // Se pode reiniciar, substitui pelo novo número (reinicializando a conta).
@@ -98,23 +125,16 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
                 return;
             }
         } else { // Se for operador, acrescenta ele no visor.
-            if (valor !== '=' && valor !== '<-') {
+            if (valor !== '=') {
                 document.getElementById('operador').innerText = valor;
                 document.getElementById('visor').innerText += valor;
                 return;
             }
-            if (valor == '<-') {
-                document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
-                document.getElementById('primeiroNumero').innerText = visor.substring(0, visor.length - 1)
-            }
-
         }
     } else { // Se já tiver operador
         if (tipo == 'numero') {
-
             if ((segundoNumero == '' && valor != ',') || segundoNumero != '') {
                 if (!(segundoNumero == '0' && valor == '0')) { // Não adiciona mais de 1 zero.
-
                     if (segundoNumero == '0' && valor != ',') { // Substitui o zero por outro número na primeira casa do segundoNumero.
                         document.getElementById('segundoNumero').innerText = valor;
                         document.getElementById('visor').innerText = valor;
@@ -130,10 +150,6 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
                 document.getElementById('segundoNumero').innerText += 0 + valor;
                 document.getElementById('visor').innerText += 0 + valor;
             }
-            if (valor == '<-') {
-                document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
-                document.getElementById('segundoNumero').innerText = visor.substring(0, visor.length - 1)
-            }
             return;
         }
         if (segundoNumero == '') { // Se já tiver operador e vier outro operador, substitui o mesmo.
@@ -143,10 +159,7 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
                 document.getElementById('visor').innerText = resultadoCalcular;
                 document.getElementById('operador').innerText = '';
                 document.getElementById('total').innerText = resultadoCalcular;
-                if (valor == '<-') {
-                    document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
-                    document.getElementById('segundoNumero').innerText = visor.substring(0, visor.length - 1)
-                }
+                
             } else {
                 document.getElementById('operador').innerText = valor;
                 document.getElementById('visor').innerText = visor.substring(0, visor.length - 1) + valor;
@@ -175,61 +188,141 @@ document.addEventListener("keydown", function pressionarTecla(tecla) {
     switch (tecla.key) {
         case 'Enter':
             document.querySelector("#botao-igual").click();
-            /*document.querySelector("#botao-igual").style.backgroundColor = 'gray';*/
+            document.querySelector("#botao-igual").style.backgroundColor = 'gray';
             break;
         case 'Escape':
             document.querySelector("#botao-reset").click();
+            document.querySelector("#botao-reset").style.backgroundColor = 'gray';
             break;
         case 'Backspace':
             document.querySelector("#botao-backspace").click();
+            document.querySelector("#botao-backspace").style.backgroundColor = 'gray';
             break;
         case '/':
             document.querySelector("#botao-dividir").click();
+            document.querySelector("#botao-dividir").style.backgroundColor = 'gray';
             break;
         case '*':
             document.querySelector("#botao-vezes").click();
+            document.querySelector("#botao-vezes").style.backgroundColor = 'gray';
             break;
         case '-':
             document.querySelector("#botao-menos").click();
+            document.querySelector("#botao-menos").style.backgroundColor = 'gray';
             break;
         case '+':
             document.querySelector("#botao-mais").click();
+            document.querySelector("#botao-mais").style.backgroundColor = 'gray';
             break;
         case ',':
             document.querySelector("#botao-decimal").click();
+            document.querySelector("#botao-decimal").style.backgroundColor = 'gray';
             break;
         case '0':
             document.querySelector("#botao-0").click();
+            document.querySelector("#botao-0").style.backgroundColor = 'gray';
             break;
         case '1':
             document.querySelector("#botao-1").click();
+            document.querySelector("#botao-1").style.backgroundColor = 'gray';
             break;
         case '2':
             document.querySelector("#botao-2").click();
+            document.querySelector("#botao-2").style.backgroundColor = 'gray';
             break;
         case '3':
             document.querySelector("#botao-3").click();
+            document.querySelector("#botao-3").style.backgroundColor = 'gray';
             break;
         case '4':
             document.querySelector("#botao-4").click();
+            document.querySelector("#botao-4").style.backgroundColor = 'gray';
             break;
         case '5':
             document.querySelector("#botao-5").click();
+            document.querySelector("#botao-5").style.backgroundColor = 'gray';
             break;
         case '6':
             document.querySelector("#botao-6").click();
+            document.querySelector("#botao-6").style.backgroundColor = 'gray';
             break;
         case '7':
             document.querySelector("#botao-7").click();
+            document.querySelector("#botao-7").style.backgroundColor = 'gray';
             break;
         case '8':
             document.querySelector("#botao-8").click();
+            document.querySelector("#botao-8").style.backgroundColor = 'gray';
             break;
         case '9':
             document.querySelector("#botao-9").click();
+            document.querySelector("#botao-9").style.backgroundColor = 'gray';
             break;
         default:
             return; // Quit when this doesn't handle the key event.
+    }
+});
+document.addEventListener("keyup", function pressionarTecla(tecla) {
+    if (event.defaultPrevented)
+        return; // Do nothing if the event was already processed
+
+    switch (tecla.key) {
+        case 'Enter':
+            document.querySelector("#botao-igual").style.backgroundColor = 'white';
+            break;
+        case 'Escape':
+            document.querySelector("#botao-reset").style.backgroundColor = 'white';
+            break;
+        case 'Backspace':
+            document.querySelector("#botao-backspace").style.backgroundColor = 'white';
+            break;
+        case '/':
+            document.querySelector("#botao-dividir").style.backgroundColor = 'white';
+            break;
+        case '*':
+            document.querySelector("#botao-vezes").style.backgroundColor = 'white';
+            break;
+        case '-':
+            document.querySelector("#botao-menos").style.backgroundColor = 'white';
+            break;
+        case '+':
+            document.querySelector("#botao-mais").style.backgroundColor = 'white';
+            break;
+        case ',':
+            document.querySelector("#botao-decimal").style.backgroundColor = 'white';
+            break;
+        case '0':
+            document.querySelector("#botao-0").style.backgroundColor = 'white';
+            break;
+        case '1':
+            document.querySelector("#botao-1").style.backgroundColor = 'white';
+            break;
+        case '2':
+            document.querySelector("#botao-2").style.backgroundColor = 'white';
+            break;
+        case '3':
+            document.querySelector("#botao-3").style.backgroundColor = 'white';
+            break;
+        case '4':
+            document.querySelector("#botao-4").style.backgroundColor = 'white';
+            break;
+        case '5':
+            document.querySelector("#botao-5").style.backgroundColor = 'white';
+            break;
+        case '6':
+            document.querySelector("#botao-6").style.backgroundColor = 'white';
+            break;
+        case '7':
+            document.querySelector("#botao-7").style.backgroundColor = 'white';
+            break;
+        case '8':
+            document.querySelector("#botao-8").style.backgroundColor = 'white';
+            break;
+        case '9':
+            document.querySelector("#botao-9").style.backgroundColor = 'white';
+            break;
+        default:
+            return;
     }
 });
 
