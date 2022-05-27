@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
-    numeral.register('locales', 'pt-br');
-});
+//document.addEventListener('DOMContentLoaded', function () {
+//    numeral.register('locales', 'pt-br');
+//});
 
 function alteraTextPaginaTab(text) {
     document.getElementById('textPaginaTab').innerText = text;
@@ -61,6 +61,10 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
     if (valor == '<-') {
         if (primeiroNumero == '')
             return;
+        if (visor == 'Juvenil') {
+            montarCalculo('C', 'operador');
+            return;
+        }
         if (operador == '') {
             if (primeiroNumero != '0' && primeiroNumero.length > 1) {
                 document.getElementById('visor').innerText = visor.substring(0, visor.length - 1);
@@ -68,6 +72,7 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
             } else {
                 document.getElementById('visor').innerText = '0';
                 document.getElementById('primeiroNumero').innerText = '';
+                document.getElementById('total').innerText = '';
             }
         } else {
             if (segundoNumero != '0' && segundoNumero.length > 1) {
@@ -89,8 +94,8 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
             document.getElementById('primeiroNumero').innerText = valor;
             document.getElementById('visor').innerText = valor;
         } else if (valor == ',') {
-            document.getElementById('primeiroNumero').innerText += valor;
-            document.getElementById('visor').innerText += valor;
+            document.getElementById('primeiroNumero').innerText = '0' + valor;
+            document.getElementById('visor').innerText = '0' + valor;
         } else if (valor != '=') {
             document.getElementById('primeiroNumero').innerText = '0';
             document.getElementById('operador').innerText = valor;
