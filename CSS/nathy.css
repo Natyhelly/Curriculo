@@ -154,3 +154,18 @@ body {
     transform: rotate(-9.9deg);
     margin-left: 25%;
 }
+#formulario {
+    display: flex;
+    gap: 2px 20px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 170px;
+    height: 60px;
+    margin-left: 25%;
+}
+.nome {
+    text-align: center;
+}
+.data {
+    text-align: center;
+}

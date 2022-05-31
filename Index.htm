@@ -63,6 +63,9 @@
             <li class="nav-item" role="presentation">
                 <button onclick="alteraTextPaginaTab('Jogo da Velha')" class="nav-link" id="pills-jogo-tab" data-bs-toggle="pill" data-bs-target="#pills-jogo" type="button" role="tab" aria-controls="pills-jogo" aria-selected="false">Jogo da Velha</button>
             </li>
+            <li class="nav-item" role="presentation">
+                <button onclick="alteraTextPaginaTab('Músicas')" class="nav-link" id="pills-musicas-tab" data-bs-toggle="pill" data-bs-target="#pills-musicas" type="button" role="tab" aria-controls="pills-musicas" aria-selected="false">Músicas</button>
+            </li>
         </ul>
 
 
@@ -141,6 +144,35 @@
                         <div id="reiniciar-jogo" onclick="reiniciarJogo()">Reiniciar Jogo</div>
                     </div>
                 </div>
+            </div>
+            <div class="tab-pane fade" id="pills-musicas" role="tabpanel" aria-labelledby="pills-musicas-tab" style="height:400px">
+                <form id="formulario" method="post">
+                    <label class="nome">Nome da Música</label>
+                    <input class="nome" type="text" value="" style="width:300px"/>
+                    <label class="genero">Gênero Musical</label>
+                    <select class="genero" name="genero">
+                        <option selected>Escolher</option>
+                        <option>Clássica</option>
+                        <option>Eletrônica</option>
+                        <option>Funk</option>
+                        <option>Pop</option>
+                        <option>Rap</option>
+                        <option>Rock</option>
+                        <option>Samba</option>
+                        <option>Sertanejo</option>
+                    </select>
+                    <label class="spotify" style="text-align: center">Tem no Spotify?</label>
+                    <div>
+                        <input class="spotify-sim" type="radio" name="spotify" />
+                        <label class="spotify-sim">Sim</label>
+                        <input class="spotify-nao" type="radio" name="spotify" />
+                        <label class="spotify-nao">Não</label>
+                        <input class="spotify-naosei" type="radio" name="spotify" />
+                        <label class="spotify-naosei">Não sei</label>
+                    </div>
+                    <label class="data">Data de Cadastro</label>
+                    <input class="data" type="text" value="" style="width:125px"/>
+                </form>
             </div>
         </div>
     </div>
