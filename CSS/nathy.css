@@ -5,6 +5,7 @@ body {
     background-repeat: no-repeat;
     cursor: default;
 }
+
 .minhaFoto {
     margin-left: 25%;
     margin-top: 20px;
@@ -15,10 +16,12 @@ body {
     border: 2px solid #FFFFFF;
     cursor: pointer;
 }
+
 .vetores {
     z-index: -1;
     position: absolute;
 }
+
 #textoNome {
     margin-top: 73px;
     margin-left: -10%;
@@ -35,6 +38,7 @@ body {
     -webkit-text-stroke-color: #000000;
     cursor: pointer;
 }
+
 #divPaginaTab {
     font-family: 'Inter';
     font-style: normal;
@@ -45,6 +49,7 @@ body {
     color: #FFFFFF;
     text-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
 }
+
 #textoOla {
     font-family: 'Birthstone';
     font-style: normal;
@@ -56,6 +61,7 @@ body {
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: #000000;
 }
+
 .container-botoes {
     display: flex;
     flex-direction: row;
@@ -64,11 +70,13 @@ body {
     flex-wrap: wrap;
     margin-left: -60px;
 }
+
 .container-numeros {
     display: flex;
     flex-flow: row wrap;
     width: 150px;
 }
+
 .caixas {
     background-color: white;
     width: 50px;
@@ -80,14 +88,17 @@ body {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
+
     .caixas:active {
         background-color: gray;
     }
+
 .container-calculadora {
     display: flex;
     flex-direction: column;
     padding-top: 45px;
 }
+
 .visor-calculadora {
     width: 200px;
     height: 60px;
@@ -99,12 +110,14 @@ body {
     padding: 8px 0 0 5px;
     font-size: 25px;
 }
+
 .container-jogo {
     display: flex;
     flex-direction: row;
     padding-top: 45px;
     width: 50%;
 }
+
 .botoesX-jogo {
     display: flex;
     flex-flow: row wrap;
@@ -113,6 +126,7 @@ body {
     margin-left: auto;
     margin-right: -120px;
 }
+
 .caixas-jogo {
     width: 80px;
     height: 80px;
@@ -120,17 +134,21 @@ body {
     font-size: 50px;
     cursor: pointer;
 }
+
 .borda-lr {
     border-left: 2px solid #000000;
     border-right: 2px solid #000000;
 }
+
 .borda-tb {
     border-top: 2px solid #000000;
     border-bottom: 2px solid #000000;
 }
+
 .borda-all {
     border: 2px solid #000000;
 }
+
 #reiniciar-jogo {
     text-align: center;
     font-family: 'Lemonada';
@@ -142,6 +160,7 @@ body {
     margin-top: 25px;
     margin-left: 50px;
 }
+
 #msg-vencedor {
     z-index: 9;
     width: 300px;
@@ -154,18 +173,50 @@ body {
     transform: rotate(-9.9deg);
     margin-left: 25%;
 }
+
 #formulario {
     display: flex;
     gap: 2px 20px;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 170px;
+    width: 500px;
     height: 60px;
+    margin-left: 23%;
+}
+.mb-3 {
+    text-align: center;
+}
+.form-check-inline {
+    margin-right: 0 !important;
+}
+.table-danger {
+    --bs-table-bg: #F2CCF9 !important;
+}
+#divBotoes {
+    display: flex;
+    justify-content: space-around; 
+    width: 100px;
+    margin-left: 50%;
+}
+
+/*.tabela {*/
+/*border: 1px solid #009289;*/
+/*border-collapse: collapse;
+    text-align: center;
+    background-color: white;
+}*/
+/*#tabela {*/
+/*display: flex;
+    justify-content: space-evenly;*/
+/*width: 764px;
     margin-left: 25%;
-}
-.nome {
-    text-align: center;
-}
-.data {
-    text-align: center;
-}
+    background-color: white;*/
+/*border: 1px solid #009289;*/
+
+/*}*/
+/*.titulo {
+    background-color: #F2CCF9;
+}*/
+/*table, th, td {
+    border: 1px solid #009289 !important;
+}*/

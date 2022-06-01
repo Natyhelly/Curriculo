@@ -23,10 +23,10 @@
         <img src="Imagens/vetor5.png" class="vetores" style="margin-top: 160.56px; right: 0px; width: 208px; height: 36.27px">
         <img src="Imagens/vetor6.png" class="vetores" style="margin-top: 610.83px; left: 29px; width: 264px; height: 113px">
         <img src="Imagens/vetor7.png" class="vetores" style="margin-top: 570.83px; right: 0px; width: 303px; height: 153px">
-        <a href="https://github.com/Natyhelly" target="_blank" class="vetores" style="margin-top: 266.83px; right: 46px">
+        <a href="https://github.com/Natyhelly" target="_blank" class="vetores" style="z-index: 3; margin-top: 266.83px; right: 46px">
             <img src="Imagens/github.png" style="height: 34px; border-radius: 50%">
         </a>
-        <a href="https://www.linkedin.com/in/nathyelly-laguna-abreu/" target="_blank" class="vetores" style="margin-top: 266.83px; right: 88px;">
+        <a href="https://www.linkedin.com/in/nathyelly-laguna-abreu/" target="_blank" class="vetores" style="z-index: 3; margin-top: 266.83px; right: 88px;">
             <img src="Imagens/linkedin.png" style="width: 35px; height: 34px; border-radius: 50%">
         </a>
 
@@ -147,32 +147,95 @@
             </div>
             <div class="tab-pane fade" id="pills-musicas" role="tabpanel" aria-labelledby="pills-musicas-tab" style="height:400px">
                 <form id="formulario" method="post">
-                    <label class="nome">Nome da Música</label>
-                    <input class="nome" type="text" value="" style="width:300px"/>
-                    <label class="genero">Gênero Musical</label>
-                    <select class="genero" name="genero">
-                        <option selected>Escolher</option>
-                        <option>Clássica</option>
-                        <option>Eletrônica</option>
-                        <option>Funk</option>
-                        <option>Pop</option>
-                        <option>Rap</option>
-                        <option>Rock</option>
-                        <option>Samba</option>
-                        <option>Sertanejo</option>
-                    </select>
-                    <label class="spotify" style="text-align: center">Tem no Spotify?</label>
-                    <div>
-                        <input class="spotify-sim" type="radio" name="spotify" />
-                        <label class="spotify-sim">Sim</label>
-                        <input class="spotify-nao" type="radio" name="spotify" />
-                        <label class="spotify-nao">Não</label>
-                        <input class="spotify-naosei" type="radio" name="spotify" />
-                        <label class="spotify-naosei">Não sei</label>
+                    <input id="id-musica" type="hidden" />
+
+                    <div class="mb-3">
+                        <label for="nomeMusica" class="form-label">Nome da Música</label>
+                        <input id="nomeMusica" class="form-control form-control-sm" type="text" value="" style="width:300px" />
                     </div>
-                    <label class="data">Data de Cadastro</label>
-                    <input class="data" type="text" value="" style="width:125px"/>
+                    <div class="mb-3">
+                        <label for="generoMusica" class="genero">Gênero Musical</label>
+                        <select id="generoMusica" class="form-select form-select-sm" name="genero" style="width: 150px; margin-top: 8px">
+                            <option selected>Escolher</option>
+                            <option>Clássica</option>
+                            <option>Eletrônica</option>
+                            <option>Funk</option>
+                            <option>Pop</option>
+                            <option>Rap</option>
+                            <option>Rock</option>
+                            <option>Samba</option>
+                            <option>Sertanejo</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label style="margin-bottom: 10px">Tem no Spotify?</label> <br />
+                        <div class="form-check form-check-inline opcoesSpotify">
+                            <input class="spotify-sim form-check-input" type="radio" name="spotify" />
+                            <label class="spotify-sim form-check-label">Sim</label>
+                        </div>
+                        <div class="form-check form-check-inline opcoesSpotify">
+                            <input class="spotify-nao form-check-input" type="radio" name="spotify" />
+                            <label class="spotify-nao form-check-label">Não</label>
+                        </div>
+                        <div class="form-check form-check-inline opcoesSpotify">
+                            <input class="spotify-naosei form-check-input" type="radio" name="spotify" />
+                            <label class="spotify-naosei form-check-label">Não sei</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dataCadastro" class="form-label">Data de Cadastro</label>
+                        <input id="dataCadastro" class="form-control form-control-sm" type="text" value="" style="width:125px" />
+                    </div>
+                    
                 </form>
+                <div style="width: 764px; margin-left: 23%; text-align: center">
+                    <table id="tabela" class="table table-light table-bordered" style="margin-top: 15px; width: 825px">
+                        <tr class="table-danger">
+                            <th class="tabela titulo" style="width: 340px">Nome</th>
+                            <th class="tabela titulo" style="width: 100px">Gênero</th>
+                            <th class="tabela titulo" style="width: 70px">Spotify?</th>
+                            <th class="tabela titulo" style="width: 85px">Cadastro</th>
+                            <th class="tabela titulo" style="width: 50px">Opções</th>
+                        </tr>
+                        <tr>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                            <td class="tabela" style="display: flex; justify-content: space-around; height: 41px; align-items:center">
+                                <img src="Imagens/Icones Bootstrap/pen.svg" alt="Bootstrap" width="16" height="16">
+                                <img src="Imagens/Icones Bootstrap/trash3.svg" alt="Bootstrap" width="16" height="16">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                        </tr>
+                        <tr>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                        </tr>
+                        <tr>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                            <td class="tabela">teste</td>
+                        </tr>
+                    </table>
+                    <div id="divBotoes">
+                        <button type="submit" id="botao-adicionar">
+                            <img src="Imagens/Icones Bootstrap/plus-lg.svg" alt="Bootstrap" width="20" height="20">
+                        </button>
+                        <button type="submit" id="botao-salvar">
+                            <img src="Imagens/Icones Bootstrap/check2.svg" alt="Bootstrap" width="20" height="20">
+                        </button>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>
