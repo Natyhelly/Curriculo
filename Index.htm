@@ -147,7 +147,7 @@
             </div>
             <div class="tab-pane fade" id="pills-musicas" role="tabpanel" aria-labelledby="pills-musicas-tab" style="height:400px">
                 <form id="formulario" method="post">
-                    <input id="id-musica" type="hidden" />
+                    <input id="idMusica" type="hidden" value="" />
 
                     <div class="mb-3">
                         <label for="nomeMusica" class="form-label">Nome da Música</label>
@@ -156,7 +156,7 @@
                     <div class="mb-3">
                         <label for="generoMusica" class="genero">Gênero Musical</label>
                         <select id="generoMusica" class="form-select form-select-sm" name="genero" style="width: 150px; margin-top: 8px">
-                            <option selected>Escolher</option>
+                            <option selected></option>
                             <option>Clássica</option>
                             <option>Eletrônica</option>
                             <option>Funk</option>
@@ -170,15 +170,15 @@
                     <div class="mb-3">
                         <label style="margin-bottom: 10px">Tem no Spotify?</label> <br />
                         <div class="form-check form-check-inline opcoesSpotify">
-                            <input class="spotify-sim form-check-input" type="radio" name="spotify" />
+                            <input class="spotify-sim form-check-input" type="radio" value="Sim" name="spotify" />
                             <label class="spotify-sim form-check-label">Sim</label>
                         </div>
                         <div class="form-check form-check-inline opcoesSpotify">
-                            <input class="spotify-nao form-check-input" type="radio" name="spotify" />
+                            <input class="spotify-nao form-check-input" type="radio" value="Nao" name="spotify" />
                             <label class="spotify-nao form-check-label">Não</label>
                         </div>
                         <div class="form-check form-check-inline opcoesSpotify">
-                            <input class="spotify-naosei form-check-input" type="radio" name="spotify" />
+                            <input class="spotify-naosei form-check-input" type="radio" value="NaoSei" name="spotify" />
                             <label class="spotify-naosei form-check-label">Não sei</label>
                         </div>
                     </div>
@@ -190,48 +190,33 @@
                 </form>
                 <div style="width: 764px; margin-left: 23%; text-align: center">
                     <table id="tabela" class="table table-light table-bordered" style="margin-top: 15px; width: 825px">
-                        <tr class="table-danger">
-                            <th class="tabela titulo" style="width: 340px">Nome</th>
-                            <th class="tabela titulo" style="width: 100px">Gênero</th>
-                            <th class="tabela titulo" style="width: 70px">Spotify?</th>
-                            <th class="tabela titulo" style="width: 85px">Cadastro</th>
-                            <th class="tabela titulo" style="width: 50px">Opções</th>
-                        </tr>
-                        <tr>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                            <td class="tabela" style="display: flex; justify-content: space-around; height: 41px; align-items:center">
-                                <img src="Imagens/Icones Bootstrap/pen.svg" alt="Bootstrap" width="16" height="16">
-                                <img src="Imagens/Icones Bootstrap/trash3.svg" alt="Bootstrap" width="16" height="16">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                        </tr>
-                        <tr>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                        </tr>
-                        <tr>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                            <td class="tabela">teste</td>
-                        </tr>
+                        <tbody id="bodyTabela">
+                            <tr class="table-danger">
+                                <th style="width: 340px">Nome</th>
+                                <th style="width: 100px">Gênero</th>
+                                <th style="width: 70px">Spotify?</th>
+                                <th style="width: 85px">Cadastro</th>
+                                <th style="width: 50px">Opções</th>
+                            </tr>
+                            <tr id="1" class="registros">
+                                <td class="registros">Nothing Else Matters - Metallica</td>
+                                <td class="registros">Rock</td>
+                                <td class="registros">Sim</td>
+                                <td class="registros">02/06/2022</td>
+                                <td class="registros" style="display: flex; justify-content: space-around; height: 41px; align-items:center">
+                                    <img src="Imagens/Icones Bootstrap/pen.svg" alt="Bootstrap" width="16" height="16">
+                                    <img src="Imagens/Icones Bootstrap/trash3.svg" alt="Bootstrap" width="16" height="16">
+                                </td>
+                            </tr>
+                        </tbody>
+                        
                     </table>
                     <div id="divBotoes">
-                        <button type="submit" id="botao-adicionar">
-                            <img src="Imagens/Icones Bootstrap/plus-lg.svg" alt="Bootstrap" width="20" height="20">
-                        </button>
-                        <button type="submit" id="botao-salvar">
+                        <button onclick="gravarDados()" type="button" id="botao-salvar" style="border-radius: 10px">
                             <img src="Imagens/Icones Bootstrap/check2.svg" alt="Bootstrap" width="20" height="20">
+                        </button>
+                        <button type="submit" id="botao-cancelar" style="border-radius: 10px">
+                            <img src="Imagens/Icones Bootstrap/x-lg.svg" alt="Bootstrap" width="20" height="20">
                         </button>
                     </div>
                     

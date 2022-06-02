@@ -363,21 +363,21 @@ function jogoDaVelha(casa) {
     var casa9 = document.getElementById('casa-9').innerText;
 
     if (casa1 == 'X' && casa2 == 'X' && casa3 == 'X')
-        vencedor('O', '1', '2', '3');
+        vencedor('X', '1', '2', '3');
     else if (casa4 == 'X' && casa5 == 'X' && casa6 == 'X')
-        vencedor('O', '4', '5', '6');
+        vencedor('X', '4', '5', '6');
     else if (casa7 == 'X' && casa8 == 'X' && casa9 == 'X')
-        vencedor('O', '7', '8', '9');
+        vencedor('X', '7', '8', '9');
     else if (casa1 == 'X' && casa4 == 'X' && casa7 == 'X')
-        vencedor('O', '1', '4', '7');
+        vencedor('X', '1', '4', '7');
     else if (casa2 == 'X' && casa5 == 'X' && casa8 == 'X')
-        vencedor('O', '2', '5', '8');
+        vencedor('X', '2', '5', '8');
     else if (casa3 == 'X' && casa6 == 'X' && casa9 == 'X')
-        vencedor('O', '3', '6', '9');
+        vencedor('X', '3', '6', '9');
     else if (casa1 == 'X' && casa5 == 'X' && casa9 == 'X')
-        vencedor('O', '1', '5', '9');
+        vencedor('X', '1', '5', '9');
     else if (casa3 == 'X' && casa5 == 'X' && casa7 == 'X')
-        vencedor('O', '3', '5', '7');
+        vencedor('X', '3', '5', '7');
     else if (casa1 == 'O' && casa2 == 'O' && casa3 == 'O')
         vencedor('O', '1', '2', '3');
     else if (casa4 == 'O' && casa5 == 'O' && casa6 == 'O')
@@ -403,6 +403,7 @@ function reiniciarJogo() {
     for (let i = 1; i <= 9; i++) {
         document.getElementById('casa-' + i.toString()).innerText = '';
         document.querySelector('#casa-' + i.toString()).removeAttribute('disabled');
+        document.getElementById('casa-' + i).style.backgroundColor = '';
     }
     document.querySelector('#proximoValor').value = 'X';
     document.querySelector('#casasPreenchidas').value = '';
@@ -422,3 +423,49 @@ function vencedor(jogador, casa1, casa2, casa3) {
         document.getElementById('msg-vencedor').innerText = 'Game over :(';
 }
 
+function validaCamposFormulario(nome, genero, spotify, cadastro) {
+    if (nome == '' || genero == '' || spotify == '' || cadastro == '') {
+        alert('Preencha todos os campos para salvar');
+        return false;
+    }
+}
+
+function proximoRegistro() {
+    var proximoId = '';
+
+}
+
+function gravarDados() {
+    var generoSelecionado = document.getElementById('generoMusica');
+    var radioSelecionado = document.querySelector('input[name="spotify"]:checked');
+
+    var nomeMusica = document.getElementById('nomeMusica').value;
+    var generoMusica = generoSelecionado.options[generoSelecionado.selectedIndex].value;
+    var spotifySelecionado = radioSelecionado != null ? radioSelecionado.value : '';
+    var dataCadastro = document.getElementById('dataCadastro').value;
+
+    console.log(nomeMusica);
+    console.log(generoMusica);
+    console.log(spotifySelecionado);
+    console.log(dataCadastro);
+
+    //if (!validaCamposFormulario(nomeMusica, generoMusica, spotifySelecionado, dataCadastro)) {
+    //    /*return;*/
+    //}
+
+
+    if (document.getElementById('idMusica').value == '') {
+       /* $('#myTable > tbody:last-child').append('<tr>...</tr><tr>...</tr>');*/
+        document.getElementById('bodyTabela last-child').append('<tr id="1" class="registros"> \
+                            <td class="registros">Nothing Else Matters - Metallica</td> \
+                            <td class="registros">Rock</td> \
+                            <td class="registros">Sim</td> \
+                            <td class="registros">02/06/2022</td> \
+                            <td class="registros" style="display: flex; justify-content: space-around; height: 41px; align-items:center"> \
+                                <img src="Imagens/Icones Bootstrap/pen.svg" alt="Bootstrap" width="16" height="16"> \
+                                <img src="Imagens/Icones Bootstrap/trash3.svg" alt="Bootstrap" width="16" height="16"> \
+                            </td> \
+                        </tr>');
+
+    }
+}
