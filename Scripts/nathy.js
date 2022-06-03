@@ -39,7 +39,7 @@ function calcular(operador, valor1, valor2) {
 
 
 function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab calculadora.
-    
+
 
     var visor = document.getElementById('visor').innerText;
     var primeiroNumero = document.getElementById('primeiroNumero').innerText;
@@ -164,7 +164,7 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
                 document.getElementById('visor').innerText = resultadoCalcular;
                 document.getElementById('operador').innerText = '';
                 document.getElementById('total').innerText = resultadoCalcular;
-                
+
             } else {
                 document.getElementById('operador').innerText = valor;
                 document.getElementById('visor').innerText = visor.substring(0, visor.length - 1) + valor;
@@ -427,15 +427,24 @@ function validaCamposFormulario(nome, genero, spotify, cadastro) {
     if (nome == '' || genero == '' || spotify == '' || cadastro == '') {
         alert('Preencha todos os campos para salvar');
         return false;
-    }
+    } else
+        return true;
 }
 
 function proximoRegistro() {
-    var proximoId = '';
+    var proximoId = 1;
+    var registrosId = document.getElementsByClassName('registros');
 
+    for (let i = 0; i < registrosId.length; i++) {
+        if (proximoId < parseInt(registrosId[i].id))
+            proximoId = parseInt(registrosId[i].id);
+    }
+    return (proximoId + 1).toString();
 }
 
 function gravarDados() {
+    var proximoId = proximoRegistro();
+
     var generoSelecionado = document.getElementById('generoMusica');
     var radioSelecionado = document.querySelector('input[name="spotify"]:checked');
 
@@ -449,23 +458,31 @@ function gravarDados() {
     console.log(spotifySelecionado);
     console.log(dataCadastro);
 
-    //if (!validaCamposFormulario(nomeMusica, generoMusica, spotifySelecionado, dataCadastro)) {
-    //    /*return;*/
-    //}
-
-
+    if (!validaCamposFormulario(nomeMusica, generoMusica, spotifySelecionado, dataCadastro)) {
+        return;
+    }
     if (document.getElementById('idMusica').value == '') {
-       /* $('#myTable > tbody:last-child').append('<tr>...</tr><tr>...</tr>');*/
-        document.getElementById('bodyTabela last-child').append('<tr id="1" class="registros"> \
-                            <td class="registros">Nothing Else Matters - Metallica</td> \
-                            <td class="registros">Rock</td> \
-                            <td class="registros">Sim</td> \
-                            <td class="registros">02/06/2022</td> \
-                            <td class="registros" style="display: flex; justify-content: space-around; height: 41px; align-items:center"> \
+        var novaTr = '<tr id="' + proximoId + '" class="registros"> \
+                            <td>' + nomeMusica + '</td> \
+                            <td>' + generoMusica + '</td> \
+                            <td>' + spotifySelecionado + '</td> \
+                            <td>' + dataCadastro + '</td> \
+                            <td style="display: flex; justify-content: space-around; height: 41px; align-items:center"> \
                                 <img src="Imagens/Icones Bootstrap/pen.svg" alt="Bootstrap" width="16" height="16"> \
                                 <img src="Imagens/Icones Bootstrap/trash3.svg" alt="Bootstrap" width="16" height="16"> \
                             </td> \
-                        </tr>');
-
+                        </tr>';
+        document.getElementById('bodyTabela').innerHTML += novaTr;
     }
+    apagarDados();
+}
+
+function apagarDados() {
+    var radioSelecionado = document.querySelector('input[name="spotify"]:checked');
+
+    document.getElementById('nomeMusica').value = '';
+    document.getElementById('generoMusica').selectedIndex = 0;
+    if (radioSelecionado != null) radioSelecionado.checked = false;
+    document.getElementById('dataCadastro').value = '';
+    document.getElementById('idMusica').value = '';
 }
