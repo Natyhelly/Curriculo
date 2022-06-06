@@ -151,7 +151,7 @@
 
                     <div class="mb-3">
                         <label for="nomeMusica" class="form-label">Nome da Música</label>
-                        <input id="nomeMusica" class="form-control form-control-sm" type="text" value="" style="width:300px" />
+                        <input id="nomeMusica" class="form-control form-control-sm" type="text" value="" placeholder="Ex.: Nome da música - Artista" style="width:300px" />
                     </div>
                     <div class="mb-3">
                         <label for="generoMusica" class="genero">Gênero Musical</label>
@@ -167,7 +167,7 @@
                             <option>Sertanejo</option>
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <div  name="divSpotify" class="mb-3">
                         <label style="margin-bottom: 10px">Tem no Spotify?</label> <br />
                         <div class="form-check form-check-inline opcoesSpotify">
                             <input class="spotify-sim form-check-input" type="radio" value="Sim" name="spotify" />
@@ -184,7 +184,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="dataCadastro" class="form-label">Data de Cadastro</label>
-                        <input id="dataCadastro" class="form-control form-control-sm" type="text" value="" style="width:125px" />
+                        <input id="dataCadastro" class="form-control form-control-sm" type="text" value="" placeholder="Ex.: 06/06/1994" style="width:125px" />
                     </div>
                     
                 </form>
@@ -197,25 +197,15 @@
                                 <th style="width: 70px">Spotify?</th>
                                 <th style="width: 85px">Cadastro</th>
                                 <th style="width: 50px">Opções</th>
-                            </tr>
-                            <!--<tr id="1" class="registros">
-                                <td>Nothing Else Matters - Metallica</td>
-                                <td>Rock</td>
-                                <td>Sim</td>
-                                <td>02/06/2022</td>
-                                <td style="display: flex; justify-content: space-around; height: 41px; align-items:center">
-                                    <img src="Imagens/Icones Bootstrap/pen.svg" alt="Bootstrap" width="16" height="16">
-                                    <img src="Imagens/Icones Bootstrap/trash3.svg" alt="Bootstrap" width="16" height="16">
-                                </td>
-                            </tr>-->
                         </tbody>
+
                         
                     </table>
                     <div id="divBotoes">
-                        <button onclick="gravarDados()" type="button" id="botao-salvar" style="border-radius: 10px">
+                        <button onclick="gravarDados()" type="button" id="botao-salvar" style="border-radius: 10px; border: 2px solid #dfc2c4">
                             <img src="Imagens/Icones Bootstrap/check2.svg" alt="Bootstrap" width="20" height="20">
                         </button>
-                        <button onclick="apagarDados()" type="button" id="botao-cancelar" style="border-radius: 10px">
+                        <button onclick="apagarDados()" type="button" id="botao-cancelar" style="border-radius: 10px; border: 2px solid #dfc2c4">
                             <img src="Imagens/Icones Bootstrap/x-lg.svg" alt="Bootstrap" width="20" height="20">
                         </button>
                     </div>

@@ -427,12 +427,17 @@ function validaCamposFormulario(nome, genero, spotify, cadastro) {
     if (nome == '' || genero == '' || spotify == '' || cadastro == '') {
         alert('Preencha todos os campos para salvar');
         return false;
-    } else
+    }
+    //var padraoData = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
+    //if (!padraoData.test(cadastro)) {
+    //    alert("Digite a data no formato dd/mm/aaaa");
+    //    return false;
+    //}
         return true;
 }
 
 function proximoRegistro() {
-    var proximoId = 1;
+    var proximoId = 0;
     var registrosId = document.getElementsByClassName('registros');
 
     for (let i = 0; i < registrosId.length; i++) {
@@ -453,11 +458,6 @@ function gravarDados() {
     var spotifySelecionado = radioSelecionado != null ? radioSelecionado.value : '';
     var dataCadastro = document.getElementById('dataCadastro').value;
 
-    console.log(nomeMusica);
-    console.log(generoMusica);
-    console.log(spotifySelecionado);
-    console.log(dataCadastro);
-
     if (!validaCamposFormulario(nomeMusica, generoMusica, spotifySelecionado, dataCadastro)) {
         return;
     }
@@ -468,8 +468,8 @@ function gravarDados() {
                             <td>' + spotifySelecionado + '</td> \
                             <td>' + dataCadastro + '</td> \
                             <td style="display: flex; justify-content: space-around; height: 41px; align-items:center"> \
-                                <img src="Imagens/Icones Bootstrap/pen.svg" alt="Bootstrap" width="16" height="16"> \
-                                <img src="Imagens/Icones Bootstrap/trash3.svg" alt="Bootstrap" width="16" height="16"> \
+                                <img onclick="editarLinha('+ proximoId +')" src="Imagens/Icones Bootstrap/pen.svg" alt="Bootstrap" width="16" height="16" style="cursor: pointer"> \
+                                <img onclick="deletarLinha('+ proximoId +')" src="Imagens/Icones Bootstrap/trash3.svg" alt="Bootstrap" width="16" height="16" style="cursor: pointer"> \
                             </td> \
                         </tr>';
         document.getElementById('bodyTabela').innerHTML += novaTr;
@@ -477,12 +477,30 @@ function gravarDados() {
     apagarDados();
 }
 
+function deletarLinha(id) {
+    document.getElementById(id).remove();
+}
+
+function editarLinha(id) {
+    document.getElementById('idMusica').value = id;
+    var tr = document.getElementById(id);
+
+    document.getElementById('nomeMusica').value = tr.children[0].innerHTML;
+
+    const dropDown = document.getElementById('generoMusica');
+    document.getElementById('generoMusica').selectedIndex = [...dropDown.options].findIndex(option => option.text === tr.children[1].innerHTML);
+
+    document.querySelector('input[name="spotify"]:checked').value = ;
+
+    document.getElementById('dataCadastro').value = tr.children[3].innerHTML;
+}
+    
 function apagarDados() {
     var radioSelecionado = document.querySelector('input[name="spotify"]:checked');
+    document.getElementById('idMusica').value = '';
 
     document.getElementById('nomeMusica').value = '';
     document.getElementById('generoMusica').selectedIndex = 0;
     if (radioSelecionado != null) radioSelecionado.checked = false;
     document.getElementById('dataCadastro').value = '';
-    document.getElementById('idMusica').value = '';
 }
