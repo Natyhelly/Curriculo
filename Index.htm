@@ -67,9 +67,6 @@
                 <button onclick="alteraTextPaginaTab('Músicas')" class="nav-link" id="pills-musicas-tab" data-bs-toggle="pill" data-bs-target="#pills-musicas" type="button" role="tab" aria-controls="pills-musicas" aria-selected="false">Músicas</button>
             </li>
         </ul>
-
-
-
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 
@@ -85,7 +82,6 @@
                     </text>
                 </div>
             </div>
-
             <div class="tab-pane fade" id="pills-calculator" role="tabpanel" aria-labelledby="pills-calculator-tab" style="padding-left: 48%">
                 <input id="primeiroNumero" type="hidden" />
                 <input id="segundoNumero" type="hidden" />
@@ -170,16 +166,16 @@
                     <div  name="divSpotify" class="mb-3">
                         <label style="margin-bottom: 10px">Tem no Spotify?</label> <br />
                         <div class="form-check form-check-inline opcoesSpotify">
-                            <input class="spotify-sim form-check-input" type="radio" value="Sim" name="spotify" />
-                            <label class="spotify-sim form-check-label">Sim</label>
+                            <input id="spoti-Sim" class="form-check-input" type="radio" value="Sim" name="spotify" />
+                            <label class="form-check-label">Sim</label>
                         </div>
                         <div class="form-check form-check-inline opcoesSpotify">
-                            <input class="spotify-nao form-check-input" type="radio" value="Nao" name="spotify" />
-                            <label class="spotify-nao form-check-label">Não</label>
+                            <input id="spoti-Nao" class="form-check-input" type="radio" value="Nao" name="spotify" />
+                            <label class="form-check-label">Não</label>
                         </div>
                         <div class="form-check form-check-inline opcoesSpotify">
-                            <input class="spotify-naosei form-check-input" type="radio" value="NaoSei" name="spotify" />
-                            <label class="spotify-naosei form-check-label">Não sei</label>
+                            <input id="spoti-NaoSei"  class="form-check-input" type="radio" value="NaoSei" name="spotify" />
+                            <label class="form-check-label">Não sei</label>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -198,8 +194,6 @@
                                 <th style="width: 85px">Cadastro</th>
                                 <th style="width: 50px">Opções</th>
                         </tbody>
-
-                        
                     </table>
                     <div id="divBotoes">
                         <button onclick="gravarDados()" type="button" id="botao-salvar" style="border-radius: 10px; border: 2px solid #dfc2c4">

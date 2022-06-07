@@ -15,7 +15,6 @@ function calcular(operador, valor1, valor2) {
         var resultado = 'Juvenil';
         return resultado;
     }
-
     if (operador == '+')
         var resultado = valor1 + valor2;
     else {
@@ -27,20 +26,14 @@ function calcular(operador, valor1, valor2) {
                     var resultado = (valor1 * valor2).toFixed(valor1.toString().length - 2 + valor2.toString().length - 2);
                 else
                     var resultado = (valor1 * valor2);
-
-
             } else
                 var resultado = (valor1 / valor2)/*.toPrecision(13)*/;
-
         }
     }
     return resultado.toString().replace('.', ',');
 }
 
-
 function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab calculadora.
-
-
     var visor = document.getElementById('visor').innerText;
     var primeiroNumero = document.getElementById('primeiroNumero').innerText;
     var segundoNumero = document.getElementById('segundoNumero').innerText;
@@ -48,8 +41,7 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
     var resultadoCalcular = '';
     var total = document.getElementById('total').innerText;
 
-    // Limpa o visor e todos os campos escondidos.
-    if (valor == 'C') {
+    if (valor == 'C') {  // Limpa o visor e todos os campos escondidos.
         document.getElementById('visor').innerText = '0';
         document.getElementById('primeiroNumero').innerText = '';
         document.getElementById('segundoNumero').innerText = '';
@@ -57,7 +49,6 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
         document.getElementById('total').innerText = '';
         return;
     }
-
     if (valor == '<-') {
         if (primeiroNumero == '')
             return;
@@ -88,8 +79,7 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
         }
         return;
     }
-    // Adiciona o primeiro número se não for 0.
-    if (primeiroNumero == '') {
+    if (primeiroNumero == '') { // Adiciona o primeiro número se não for 0.
         if (tipo == 'numero' && valor != '0' && valor != ',') {
             document.getElementById('primeiroNumero').innerText = valor;
             document.getElementById('visor').innerText = valor;
@@ -103,9 +93,7 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
         }
         return;
     }
-
-    // Acrescenta outro número se o operador e o total estiver vazio. 
-    if (operador == '') {
+    if (operador == '') { // Acrescenta outro número se o operador e o total estiver vazio.
         if (tipo == 'numero') {
             if (total == '') { // Se não é pra reiniciar ainda...
                 if ((valor == ',' && primeiroNumero.indexOf(',') == -1) || valor != ',') { // ... e já tiver vírgula, não põe outra.
@@ -115,14 +103,11 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
                     document.getElementById('visor').innerText += valor;
                 }
                 return;
-
             } else { // Se pode reiniciar, substitui pelo novo número (reinicializando a conta).
                 document.getElementById('total').innerText = '';
-
                 if (valor == ',') {
                     document.getElementById('primeiroNumero').innerText = 0 + valor;
                     document.getElementById('visor').innerText = 0 + valor;
-
                 } else {
                     document.getElementById('primeiroNumero').innerText = valor;
                     document.getElementById('visor').innerText = valor;
@@ -164,7 +149,6 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
                 document.getElementById('visor').innerText = resultadoCalcular;
                 document.getElementById('operador').innerText = '';
                 document.getElementById('total').innerText = resultadoCalcular;
-
             } else {
                 document.getElementById('operador').innerText = valor;
                 document.getElementById('visor').innerText = visor.substring(0, visor.length - 1) + valor;
@@ -173,7 +157,6 @@ function montarCalculo(valor, tipo) { // Função para montar o cálculo na tab cal
             resultadoCalcular = calcular(operador, parseFloat(primeiroNumero.replace(',', '.')), parseFloat(segundoNumero.replace(',', '.')));
             document.getElementById('primeiroNumero').innerText = resultadoCalcular;
             document.getElementById('segundoNumero').innerText = '';
-
             if (valor == '=') { // Se for o sinal de = , calcula a conta e limpa o operador.
                 document.getElementById('visor').innerText = resultadoCalcular;
                 document.getElementById('operador').innerText = '';
@@ -428,12 +411,12 @@ function validaCamposFormulario(nome, genero, spotify, cadastro) {
         alert('Preencha todos os campos para salvar');
         return false;
     }
-    //var padraoData = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
-    //if (!padraoData.test(cadastro)) {
-    //    alert("Digite a data no formato dd/mm/aaaa");
-    //    return false;
-    //}
-        return true;
+    var padraoData = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
+    if (!padraoData.test(cadastro)) {
+        alert("Digite a data no formato dd/mm/aaaa");
+        return false;
+    }
+    return true;
 }
 
 function proximoRegistro() {
@@ -453,6 +436,7 @@ function gravarDados() {
     var generoSelecionado = document.getElementById('generoMusica');
     var radioSelecionado = document.querySelector('input[name="spotify"]:checked');
 
+    var idMusica = document.getElementById('idMusica').value;
     var nomeMusica = document.getElementById('nomeMusica').value;
     var generoMusica = generoSelecionado.options[generoSelecionado.selectedIndex].value;
     var spotifySelecionado = radioSelecionado != null ? radioSelecionado.value : '';
@@ -461,19 +445,23 @@ function gravarDados() {
     if (!validaCamposFormulario(nomeMusica, generoMusica, spotifySelecionado, dataCadastro)) {
         return;
     }
-    if (document.getElementById('idMusica').value == '') {
-        var novaTr = '<tr id="' + proximoId + '" class="registros"> \
+    var idTr = idMusica != '' ? idMusica : proximoId;
+    var novaTr = '<tr id="' + idTr + '" class="registros"> \
                             <td>' + nomeMusica + '</td> \
                             <td>' + generoMusica + '</td> \
                             <td>' + spotifySelecionado + '</td> \
                             <td>' + dataCadastro + '</td> \
                             <td style="display: flex; justify-content: space-around; height: 41px; align-items:center"> \
-                                <img onclick="editarLinha('+ proximoId +')" src="Imagens/Icones Bootstrap/pen.svg" alt="Bootstrap" width="16" height="16" style="cursor: pointer"> \
-                                <img onclick="deletarLinha('+ proximoId +')" src="Imagens/Icones Bootstrap/trash3.svg" alt="Bootstrap" width="16" height="16" style="cursor: pointer"> \
+                                <img onclick="editarLinha('+ idTr + ')" src="Imagens/Icones Bootstrap/pen.svg" alt="Bootstrap" width="16" height="16" style="cursor: pointer"> \
+                                <img onclick="deletarLinha('+ idTr + ')" src="Imagens/Icones Bootstrap/trash3.svg" alt="Bootstrap" width="16" height="16" style="cursor: pointer"> \
                             </td> \
                         </tr>';
+
+    if (document.getElementById('idMusica').value == '')
         document.getElementById('bodyTabela').innerHTML += novaTr;
-    }
+    else
+        document.getElementById(idTr).innerHTML = novaTr;
+
     apagarDados();
 }
 
@@ -490,11 +478,11 @@ function editarLinha(id) {
     const dropDown = document.getElementById('generoMusica');
     document.getElementById('generoMusica').selectedIndex = [...dropDown.options].findIndex(option => option.text === tr.children[1].innerHTML);
 
-    document.querySelector('input[name="spotify"]:checked').value = ;
+    document.getElementById('spoti-' + tr.children[2].innerHTML).checked = true;
 
     document.getElementById('dataCadastro').value = tr.children[3].innerHTML;
 }
-    
+
 function apagarDados() {
     var radioSelecionado = document.querySelector('input[name="spotify"]:checked');
     document.getElementById('idMusica').value = '';
