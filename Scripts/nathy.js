@@ -1,7 +1,3 @@
-//document.addEventListener('DOMContentLoaded', function () {
-//    numeral.register('locales', 'pt-br');
-//});
-
 function alteraTextPaginaTab(text) {
     document.getElementById('textPaginaTab').innerText = text;
 }
